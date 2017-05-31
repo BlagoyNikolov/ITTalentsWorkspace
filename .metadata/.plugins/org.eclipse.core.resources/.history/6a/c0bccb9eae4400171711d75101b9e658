@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Test02 {
+	public static void main(String[] args) {
+		System.out.println("Enter first number:");
+		Scanner sc = new Scanner(System.in);
+		double first = sc.nextDouble();
+		System.out.println("Enter second number:");
+		double second = sc.nextDouble();
+		
+		double sum = first + second;
+		double product = first * second;
+		double division = first / second;
+		double moduleDivision = first % second;
+		
+		
+	}
+}

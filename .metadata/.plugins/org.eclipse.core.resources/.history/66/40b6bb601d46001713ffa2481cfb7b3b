@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Task14 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter 1st position x:");
+		int firstX = sc.nextInt();
+		System.out.println("Enter 1st position y:");
+		int firstY = sc.nextInt();
+		System.out.println("Enter 2nd position x:");
+		int secondX = sc.nextInt();
+		System.out.println("Enter 2nd position y:");
+		int secondY = sc.nextInt();
+		if (day <= 0 || day > 31) {
+			System.out.println("Invalid day, try again");
+			day = sc.nextInt();
+		}
+	}
+}

@@ -1,4 +1,4 @@
-package Homework02;
+package homework02;
 
 import java.util.Scanner;
 
@@ -18,16 +18,20 @@ public class Task16 {
 		}
 		sc.close();
 
-		if (firstNumber < secondNumber) {
-			for (int i = secondNumber; i > firstNumber; i--) {
-				if (i % 50 == 0) {
-					System.out.print(i + " ");
-				}
-			}
-		} else if (secondNumber < firstNumber) {
-			for (int i = firstNumber; i > secondNumber; i--) {
-				if (i % 50 == 0) {
-					System.out.print(i + " ");
+		if (firstNumber > secondNumber) {
+			int temp = firstNumber;
+			firstNumber = secondNumber;
+			secondNumber = temp;
+		}
+		boolean firstPrinted = false;
+
+		for (int i = secondNumber; i >= firstNumber; i--) {
+			if (i % 50 == 0) {
+				if (firstPrinted == false) {
+					System.out.print(i);
+					firstPrinted = true;
+				} else {
+					System.out.print(", " + i);
 				}
 			}
 		}

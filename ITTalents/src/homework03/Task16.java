@@ -5,30 +5,35 @@ import java.util.Scanner;
 public class Task16 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		double[] array = new double[10];
-		for (int i = 0; i < array.length; i++) {
-			System.out.println("Enter element at index [" + i + "]");
-			array[i] = sc.nextInt();
+		System.out.println("Enter desired numbers: [10..5555]");
+		int firstNumber = sc.nextInt();
+		while (firstNumber < 10 || firstNumber > 5555) {
+			System.out.println("Invalid number, try again: [10..5555]");
+			firstNumber = sc.nextInt();
 		}
+		int secondNumber = sc.nextInt();
+		while (secondNumber < 10 || secondNumber > 5555) {
+			System.out.println("Invalid number, try again: [10..5555]");
+			secondNumber = sc.nextInt();
+		}
+		sc.close();
 
-		// double[] array = { -1.12, -2.43, 3.1, 4.2, 0, 6.4, -7.5, 8.6, 9.1, -4
-		// };
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] < -0.231) {
-				array[i] = ((i + 1) * (i + 1)) + 41.25;
-			} else {
-				array[i] = array[i] * (i + 1);
+		if (firstNumber > secondNumber) {
+			int temp = firstNumber;
+			firstNumber = secondNumber;
+			secondNumber = temp;
+		}
+		boolean firstPrinted = false;
+
+		for (int i = secondNumber; i >= firstNumber; i--) {
+			if (i % 50 == 0) {
+				if (firstPrinted == false) {
+					System.out.print(i);
+					firstPrinted = true;
+				} else {
+					System.out.print(", " + i);
+				}
 			}
 		}
-
-		System.out.print("[");
-		for (int i = 0; i < array.length; i++) {
-			if (i == array.length - 1) {
-				System.out.print(array[i]);
-			} else {
-				System.out.print(array[i] + ", ");
-			}
-		}
-		System.out.print("]");
 	}
 }

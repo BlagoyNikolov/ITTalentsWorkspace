@@ -8,7 +8,7 @@ public class Tasks {
 		System.out.println("Iterative find max" + maxElementOfArrayI(array));
 		System.out.println("Recursive find max" + maxElementOfArrayR(new int[] { 1, 20, 18, 3 }, 0, array[0]));
 		System.out.println("Addition " + multy(4, 6));
-		System.out.println("Power " + power(4, 3));
+		System.out.println("Power " + power(3, 8));
 	}
 
 	public static int sum(int n) {

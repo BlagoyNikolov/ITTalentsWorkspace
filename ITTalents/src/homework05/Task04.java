@@ -4,37 +4,22 @@ import java.util.Scanner;
 
 public class Task04 {
 	public static void main(String[] args) {
-		nameLetterCounter(getNames());
-	}
-	
-	public static String nameLetterCounter(String[] names) {
-		int maxSum = 0;
-		int currentSum = 0;
-		String output = null;
-		for (int i = 0; i < names.length; i++) {
-			names[i] = names[i].trim();
-			for (int j = 0; j < names[i].length(); j++) {
-				currentSum += names[i].charAt(j);
-				if (maxSum < currentSum) {
-					maxSum = currentSum;
-					output = names[i];
-				}
-			}
-			currentSum = 0;
-		}
-		System.out.println(output);
-		return output;
-	}
-
-	public static String[] getNames() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the names of two people, divided by a ','");
-		String input = sc.nextLine();
-		while (input.contains(" ") || input.isEmpty()) {
-			System.out.println("Enter a valid string pls:");
-			input = sc.nextLine();
+		System.out.println("Enter array length");
+		int size = sc.nextInt();
+
+		int[] array = new int[size];
+		for (int i = 0; i < array.length; i++) {
+			System.out.println("Enter element at index [" + i + "]");
+			array[i] = sc.nextInt();
 		}
-		String[] names = input.split(",");
-		return names;
+		
+		boolean isMirror = true;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != array[array.length - 1 - i]) {
+				isMirror = false;
+			}
+		}
+		System.out.println("Is the array a palindrome? " + isMirror);
 	}
 }

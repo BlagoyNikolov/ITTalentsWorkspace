@@ -1,29 +1,32 @@
 package homework06;
 
+import java.util.Scanner;
+
 public class Task03 {
 	public static void main(String[] args) {
-		System.out.println(isPrimeI(7));
-		System.out.println(isPrimeR(7, 2, true));
-	}
-
-	private static boolean isPrimeR(int n, int i, boolean flag) {
-		if (i == n / 2) {
-			return flag;
-		}
-		if (n % i == 0) {
-			flag = false;
-		}
-		return isPrimeR(n, i + 1, flag);
-	}
-	
-	private static boolean isPrimeI(int n) {
-		boolean isPrime = true;
-		for (int i = 2; i < n / 2; i++) {
-			if (n % i == 0) {
-				isPrime = false;
-				break;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter numebr of array rows: ");
+		int rows = sc.nextInt();
+		System.out.println("Enter numebr of array columns: ");
+		int cols = sc.nextInt();
+		int[][] array = new int[rows][cols];
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 0; j < array[i].length; j++) {
+				System.out.println("Enter element at cell [" + i + "][" + j + "]");
+				array[i][j] = sc.nextInt();
 			}
 		}
-		return isPrime;
+		sc.close();
+
+		// int[][] array = { { 1, 4, 6, 3 }, { 5, 9, 7, 2 }, { 4, 8, 1, 9 }, { 2, 3, 4, 5 } };
+		double sum = 0;
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 0; j < array[i].length; j++) {
+				sum = sum + array[i][j];
+			}
+		}
+
+		double avg = sum / (rows * cols);
+		System.out.println("Sum: " + sum + " Avg: " + avg);
 	}
 }

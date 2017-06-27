@@ -1,21 +1,25 @@
 package homework03;
 
+import java.util.Scanner;
+
 public class Task05 {
 	public static void main(String[] args) {
-		int[] array = new int[10];
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter first number:");
+		int firstNumber = sc.nextInt();
+		System.out.println("Enter second number:");
+		int secondNumber = sc.nextInt();
+		sc.close();
 		
-		for (int i = 0; i < array.length; i++) {
-			array[i] = i * 3;
-		}
-		
-		System.out.print("[");
-		for (int i = 0; i < array.length; i++) {
-			if (i == array.length - 1) {
-				System.out.print(array[i]);
-			} else {
-				System.out.print(array[i] + ", ");
+		if (firstNumber < secondNumber) {
+			for (int i = firstNumber; i <= secondNumber; i++) {
+				System.out.print(i + " ");
+			}
+		} else 
+		if (firstNumber > secondNumber) {
+			for (int i = secondNumber; i <= firstNumber; i++) {
+				System.out.print(i + " ");
 			}
 		}
-		System.out.print("]");
 	}
 }

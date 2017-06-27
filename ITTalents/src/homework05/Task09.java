@@ -4,50 +4,45 @@ import java.util.Scanner;
 
 public class Task09 {
 	public static void main(String[] args) {
-		System.out.println("The sum is: " + numbersInStringSum(getWord()));
-	}
-
-	public static int numbersInStringSum(String input) {
-		int sumOfNumbersInString = 0;
-
-		String numbers = "";
-		for (int i = 0; i < input.length(); i++) {
-			char evalChar = input.charAt(i);
-			if (evalChar == '-' && Character.isDigit(input.charAt(i + 1))) {
-				numbers += ':';
-				numbers += evalChar;
-			} else if (Character.isDigit(evalChar)) {
-				numbers += evalChar;
-			} else {
-				numbers += ':';
-			}
-		}
-		String[] output = numbers.split("\\:", -1);
-		for (int j = 0; j < output.length; j++) {
-			System.out.print(output[j] + " ");
-		}
-		System.out.println();
-		
-		int[] intArray = new int[output.length];
-		for (int i = 0; i < intArray.length; i++) {
-			if (output[i].isEmpty()) {
-				continue;
-			}
-			intArray[i] = Integer.parseInt(output[i].trim());
-			sumOfNumbersInString += intArray[i];
-		}
-
-		return sumOfNumbersInString;
-	}
-
-	public static String getWord() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter a string");
-		String input = sc.nextLine();
-		while (input.contains(" ") || input.isEmpty()) {
-			System.out.println("Enter a valid string pls:");
-			input = sc.nextLine();
+		System.out.println("Enter array length");
+		int size = sc.nextInt();
+
+		int[] array = new int[size];
+		for (int i = 0; i < array.length; i++) {
+			System.out.println("Enter element at index [" + i + "]");
+			array[i] = sc.nextInt();
 		}
-		return input;
+
+		int[] tempArray = new int[size];
+		for (int i = 0; i < tempArray.length; i++) {
+			tempArray[i] = array[array.length - 1 - i];
+		}
+		System.out.print("[");
+		for (int i = 0; i < tempArray.length; i++) {
+			if (i == tempArray.length - 1) {
+				System.out.print(tempArray[i]);
+			} else {
+				System.out.print(tempArray[i] + ", ");
+			}
+		}
+		System.out.print("]");
+		
+		//without the need of a new array
+		int temp = 0;
+		for (int i = 0; i < array.length; i++) {
+			temp = array[i];
+			array[i] = array[array.length - 1 - i];
+			array[array.length - 1 - i] = temp;	
+		}
+		System.out.print("[");
+		for (int i = 0; i < tempArray.length; i++) {
+			if (i == tempArray.length - 1) {
+				System.out.print(tempArray[i]);
+			} else {
+				System.out.print(tempArray[i] + ", ");
+			}
+		}
+		System.out.print("]");
 	}
 }

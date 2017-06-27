@@ -4,16 +4,26 @@ import java.util.Scanner;
 
 public class Task08 {
 	public static void main(String[] args) {
+		System.out.println("Enter a number: [1000.. 9999]");
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter desired number:");
 		int number = sc.nextInt();
-		sc.close();
 		
-		for (int i = 0; i < number; i++) {
-			for (int j = 0; j < number; j++) {
-				System.out.print(number - 1 + i * 2);
-			}
-			System.out.println();
+		if (number < 1000 || number > 9999) {
+			System.out.println("Invalid number try again: [1000.. 9999]");
+			number = sc.nextInt();
+		}
+		
+		int firstNumber = number / 1000 * 10 + number % 10;
+		int secondNumber = ((number / 100) % 10) * 10 + ((number / 10) % 10);
+		
+		if (firstNumber < secondNumber) {
+			System.out.println(firstNumber + "<" + secondNumber);
+		}
+		if (firstNumber == secondNumber) {
+			System.out.println(firstNumber + "=" + secondNumber);
+		}
+		if (firstNumber > secondNumber) {
+			System.out.println(firstNumber + ">" + secondNumber);
 		}
 	}
 }

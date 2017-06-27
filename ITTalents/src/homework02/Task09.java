@@ -4,37 +4,28 @@ import java.util.Scanner;
 
 public class Task09 {
 	public static void main(String[] args) {
+		System.out.println("Enter 2 two-digit numbers: [10..99]");
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter first number:");
 		int firstNumber = sc.nextInt();
-		System.out.println("Enter second number:");
-		int secondNumber = sc.nextInt();
-		sc.close();
 		
-		int sum = 0;
-		for (int i = firstNumber; i <= secondNumber; i++) {
-			if (i == secondNumber) {
-				if ((i * i) % 3 == 0) {
-					System.out.print("skip 3, ");
-					continue;
-				} else {
-					sum = sum + (i * i);		
-				}
-				System.out.print(i * i);
-			} else {
-				if ((i * i) % 3 == 0) {
-					System.out.print("skip 3, ");
-					continue;
-				} else {
-					sum = sum + (i * i);
-				}
-				System.out.print(i * i + ", ");
-			}
-			//System.out.println("[" + sum + "]");
-			if (sum > 200) {
-				System.out.println(" [Terminated] -> sum is: " + sum);
-				break;
-			}
+		if (firstNumber < 10 || firstNumber > 99) {
+			System.out.println("Invalid number try again: [10..99]");
+			firstNumber = sc.nextInt();
+		}
+		
+		int secondNumber = sc.nextInt();
+		if (secondNumber < 10 || secondNumber > 99) {
+			System.out.println("Invalid number try again: [10..99]");
+			secondNumber = sc.nextInt();
+		}
+		
+		int product = firstNumber * secondNumber;
+		int lastDigitOfProduct = product % 10;
+		
+		if (lastDigitOfProduct % 2 == 0) {
+			System.out.println(product + ", " + lastDigitOfProduct + " Prime");
+		} else {
+			System.out.println(product + ", " + lastDigitOfProduct + " Not prime");
 		}
 	}
 }

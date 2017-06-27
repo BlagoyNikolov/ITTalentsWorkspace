@@ -5,31 +5,25 @@ import java.util.Scanner;
 public class Task13 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter a decimal integer:");
-		int number = sc.nextInt();
+		System.out.println("Enter desired sum: [2..27]");
+		int sum = sc.nextInt();
+		while (sum < 2 || sum > 27) {
+			System.out.println("Invalid number, try again: [2..27]");
+			sum = sc.nextInt();
+		}
 		sc.close();
-
-		int size = 0;
-		int temp = number;
-		while (temp > 0) {
-			temp /= 2;
-			size++;
-		}
-
-		int[] array = new int[size];
-		for (int i = 0; i < array.length; i++) {
-			array[array.length - 1 - i] = number % 2;
-			number /= 2;
-		}
 		
-		System.out.print("[");
-		for (int i = 0; i < array.length; i++) {
-			if (i == array.length - 1) {
-				System.out.print(array[i]);
-			} else {
-				System.out.print(array[i] + ", ");
+		int hundreds = 0; 
+		int tens = 0; 
+		int ones = 0; 
+		
+		for (int i = 100; i < 1000; i++) {
+			hundreds = i / 100; 
+			tens = i / 10 % 10;
+			ones = i % 10;
+			if ((hundreds + tens + ones) == sum) {
+				System.out.print(i + " ");
 			}
 		}
-		System.out.print("]");
 	}
 }

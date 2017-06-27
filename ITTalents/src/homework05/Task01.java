@@ -4,28 +4,22 @@ import java.util.Scanner;
 
 public class Task01 {
 	public static void main(String[] args) {
-		String first = getString();
-		String second = getString();
-		stringManipulator(first, second);
-	}
-	
-	public static String getString() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the contents of the string");
-		String input = sc.nextLine();
-		while (input.length() > 40) {
-			System.out.println("String is too long, try with a shorter one. [40]");
-			input = sc.nextLine();
-		}
-		return input;
-	}
-	
-	public static void stringManipulator(String first, String second) {
-		String firstToLower = first.toLowerCase();
-		String secondToLower = second.toLowerCase();
-		String firstToUpper = first.toUpperCase();
-		String secondToUpper = second.toUpperCase();
+		System.out.println("Enter array length");
+		int size = sc.nextInt();
 		
-		System.out.println(firstToLower + " " + firstToUpper + " " + secondToLower + " " + secondToUpper);
+		int[] array = new int[size];
+		for (int i = 0; i < array.length; i++) {
+			System.out.println("Enter element at index [" + i + "]");
+			array[i] = sc.nextInt();
+		}
+		
+		int min = array[0];
+		for (int i = 0; i < array.length; i++) {
+			if ((array[i] % 3 == 0) && array[i] < min) {
+				min = array[i];
+			}
+		}
+		System.out.println(min);
 	}
 }

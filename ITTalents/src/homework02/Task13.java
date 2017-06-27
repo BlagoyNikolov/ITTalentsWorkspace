@@ -4,26 +4,24 @@ import java.util.Scanner;
 
 public class Task13 {
 	public static void main(String[] args) {
+		System.out.println("Enter desired temperature:");
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter desired sum: [2..27]");
-		int sum = sc.nextInt();
-		while (sum < 2 || sum > 27) {
-			System.out.println("Invalid number, try again: [2..27]");
-			sum = sc.nextInt();
+		int temperature = sc.nextInt();
+		
+		if (temperature < -20) {
+			System.out.println("freezing");
 		}
-		sc.close();
-		
-		int hundreds = 0; 
-		int tens = 0; 
-		int ones = 0; 
-		
-		for (int i = 100; i < 1000; i++) {
-			hundreds = i / 100; 
-			tens = i / 10 % 10;
-			ones = i % 10;
-			if ((hundreds + tens + ones) == sum) {
-				System.out.print(i + " ");
-			}
+		if (temperature >= -20 && temperature < 0) {
+			System.out.println("cold");
+		}
+		if (temperature >= 0 && temperature < 15) {
+			System.out.println("moderate");
+		}
+		if (temperature >= 15 && temperature < 25) {
+			System.out.println("warm");
+		}
+		if (temperature >= 25) {
+			System.out.println("hot");
 		}
 	}
 }

@@ -4,26 +4,35 @@ import java.util.Scanner;
 
 public class Task06 {
 	public static void main(String[] args) {
-		sentenceManipulator(getWords());
-	}
-
-	public static String getWords() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter some words");
-		String input = sc.nextLine();
-		while (input.contains(" ") || input.isEmpty()) {
-			System.out.println("Enter a valid string pls:");
-			input = sc.nextLine();
-		}
-		return input;
-	}
+		System.out.println("Enter first array length");
+		int firstArraySize = sc.nextInt();
 
-	public static String[] sentenceManipulator(String input) {
-		String[] words = input.split(" ");
-		for (int i = 0; i < words.length; i++) {
-			words[i] = words[i].substring(0, 1).toUpperCase() + words[i].substring(1).toLowerCase();
-			System.out.print(words[i] + " ");
+		int[] firstArray = new int[firstArraySize];
+		for (int i = 0; i < firstArray.length; i++) {
+			System.out.println("Enter element at index [" + i + "]");
+			firstArray[i] = sc.nextInt();
 		}
-		return words;
+		
+		System.out.println("Enter second array length");
+		int secondArraySize = sc.nextInt();
+
+		int[] secondArray = new int[secondArraySize];
+		for (int i = 0; i < secondArray.length; i++) {
+			System.out.println("Enter element at index [" + i + "]");
+			secondArray[i] = sc.nextInt();
+		}
+		
+		boolean areEqual = true;
+		if (firstArray.length != secondArray.length) {
+			areEqual = false;
+		} else {
+			for (int i = 0; i < firstArray.length; i++) {
+				if (firstArray[i] != secondArray[i]) {
+					areEqual = false;
+				}
+			}
+		}
+		System.out.println("Are the arrays equal? " + areEqual);
 	}
 }

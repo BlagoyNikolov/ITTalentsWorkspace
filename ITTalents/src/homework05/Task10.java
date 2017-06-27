@@ -4,28 +4,32 @@ import java.util.Scanner;
 
 public class Task10 {
 	public static void main(String[] args) {
-		System.out.println(stringShifter(getWord()));
-	}
-	
-	public static String stringShifter(String input) {
-		int charCode = 0;
-		char[] inputChars = input.toCharArray();
-		for (int i = 0; i < input.length(); i++) {
-			charCode = input.charAt(i) + 5;
-			inputChars[i] = (char) charCode;
-		}
-		
-		return new String(inputChars);
-	}
-	
-	public static String getWord() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter a string");
-		String input = sc.nextLine();
-		while (input.contains(" ") || input.isEmpty()) {
-			System.out.println("Enter a valid string pls:");
-			input = sc.nextLine();
+		 int[] array = new int[7];
+		 for (int i = 0; i < array.length; i++) {
+		 System.out.println("Enter element at index [" + i + "]");
+		 array[i] = sc.nextInt();
+		 }
+
+		//int[] array = { 1, 2, 3, 4, 5, 6, 7 };
+		int sum = 0;
+		for (int i = 0; i < array.length; i++) {
+			sum += array[i];
 		}
-		return input;
+
+		double arrLength = array.length;
+		double average = sum / arrLength;
+		double currentMinDifference = 0;
+		double minDifference = average - array[0];
+		int closestNumber = 0;
+		
+		for (int i = 0; i < array.length; i++) {
+			currentMinDifference = Math.abs(average - array[i]);
+			if (minDifference > currentMinDifference) {
+				minDifference = currentMinDifference;
+				closestNumber = array[i];
+			}
+		}
+		System.out.println("Avg is: " + average + " Closest number is: " + closestNumber);
 	}
 }

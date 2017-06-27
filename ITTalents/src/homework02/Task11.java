@@ -4,44 +4,33 @@ import java.util.Scanner;
 
 public class Task11 {
 	public static void main(String[] args) {
+		System.out.println("Enter desired 3 digit number:");
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter desired number:");
 		int number = sc.nextInt();
-		sc.close();
 		
-		//filled triangle
-		for (int i = 0; i < number; i++) {
-			for (int j = 0; j < number - 1 - i; j++) {
-				System.out.print(" ");
-			}
-			for (int j = 0; j < 1 + i * 2; j++) {
-				System.out.print("*");
-			}
-			System.out.println();
+		if (number < 100 || number > 999) {
+			System.out.println("Invalid number try again: [100.. 999]");
+			number = sc.nextInt();
+		}
+		
+		int firstDigit = number / 100;
+		int secondDigit = number / 10 % 10;
+		int thirdDigit = number % 10;
+		
+		if (firstDigit == 0 || secondDigit == 0 || thirdDigit == 0) {
+			System.out.println("Invalid number, cannot contain 0, try again:");
+			number = sc.nextInt();
+		}
+		
+		if (number < 100 || number > 999) {
+			System.out.println("Invalid number try again: [100.. 999]");
+			number = sc.nextInt();
 		}
 
-		//contoured triangle
-		for (int i = 0; i < number; i++) {
-			for (int j = 0; j < number - 1 - i; j++) {
-				System.out.print(" ");
-			}
-			System.out.print("*");
-
-			for (int j = 0; j < i * 2 - 1; j++) {
-				if (i == number - 1) {
-					for (int k = 0; k < i * 2 - 1; k++) {
-						System.out.print("*");
-					}
-					break;
-				} else {
-					System.out.print(" ");
-				}
-			}
-			if (i > 0) {
-				System.out.print("*");
-			}
-			System.out.println();
+		if (number % firstDigit == 0 && number % secondDigit == 0 && number % thirdDigit == 0) {
+			System.out.println("The number can be divided by EVERY digit it is made of");
+		} else {
+			System.out.println("The number cannot be divided by every digit it is made of");
 		}
-
 	}
 }

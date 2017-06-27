@@ -5,25 +5,29 @@ import java.util.Scanner;
 public class Task17 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter array length");
-		int size = sc.nextInt();
-
-		int[] array = new int[size];
-		for (int i = 0; i < array.length; i++) {
-			System.out.println("Enter element at index [" + i + "]");
-			array[i] = sc.nextInt();
+		System.out.println("Enter desired number: [3..20]");
+		int number = sc.nextInt();
+		while (number < 3 || number > 20) {
+			System.out.println("Invalid number, try again: [3..20]");
+			number = sc.nextInt();
 		}
-
-		//int[] array = { 7, 2, 6, 3, 8, 1, 6, 3, 5, 1, 6, 5 };
-		boolean isJagged = false;
-		for (int i = 1; i <= array.length - 2; i++) {
-			if ((array[i - 1] < array[i] && array[i] > array[i + 1])
-					|| (array[i - 1] > array[i] && array[i] < array[i + 1])) {
-				isJagged = true;
+		System.out.println("Enter desired character:");
+		char c = sc.next().charAt(0);
+		sc.close();
+		
+		for (int i = 0; i < number; i++) {
+			if (i == 0 || i == number - 1) {
+				for (int j = 0; j < number; j++) {
+					System.out.print("*");
+				}
 			} else {
-				isJagged = false;
+				System.out.print("*");
+				for (int j = 0; j < number - 2; j++) {
+					System.out.print(c);
+				}
+				System.out.print("*");
 			}
+			System.out.println();
 		}
-		System.out.println(isJagged);
 	}
 }

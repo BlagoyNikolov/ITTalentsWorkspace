@@ -4,31 +4,31 @@ import java.util.Scanner;
 
 public class Task07 {
 	public static void main(String[] args) {
-		wordCounter(getWords());
-	}
-	
-	public static String getWords() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter some words");
-		String input = sc.nextLine();
-		while (input.contains(" ") || input.isEmpty()) {
-			System.out.println("Enter a valid string pls:");
-			input = sc.nextLine();
+		System.out.println("Enter array length");
+		int size = sc.nextInt();
+
+		int[] array = new int[size];
+		for (int i = 0; i < array.length; i++) {
+			System.out.println("Enter element at index [" + i + "]");
+			array[i] = sc.nextInt();
 		}
-		return input;
-	}
-	
-	public static void wordCounter(String input) {
-		String[] words = input.split(" ");
-		int currentLongest = 0;
-		int longest = 0;
-		for (int i = 0; i < words.length; i++) {
-			currentLongest = words[i].length();
-			if (currentLongest > longest) {
-				longest = currentLongest;
+		
+		int[] newArray = new int[size];
+		newArray[0] = array[0];
+		newArray[array.length - 1] = array[array.length - 1];
+		for (int i = 1; i < newArray.length - 1; i++) {
+			newArray[i] = array[i - 1] + array[i + 1];
+		}
+		
+		System.out.print("[");
+		for (int i = 0; i < newArray.length; i++) {
+			if (i == newArray.length - 1) {
+				System.out.print(newArray[i]);
+			} else {
+				System.out.print(newArray[i] + ", ");
 			}
-			currentLongest = 0;
 		}
-		System.out.println(words.length + " words, the longest is " + longest + " chars long");
+		System.out.print("]");
 	}
 }

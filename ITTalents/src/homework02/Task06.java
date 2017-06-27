@@ -1,23 +1,22 @@
 package homework02;
-
 import java.util.Scanner;
 
 public class Task06 {
 	public static void main(String[] args) {
+		System.out.println("Enter first number:");
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter desired number:");
-		int number = sc.nextInt();
+		int firstNumber = sc.nextInt();
+		System.out.println("Enter second number:");
+		int secondNumber = sc.nextInt();
+		System.out.println("Enter third number:");
+		int thirdNumber = sc.nextInt();
 		sc.close();
 		
-		if (number < 1) {
-			System.out.println("Enter a number bigger than 1");
-			number = sc.nextInt();
-		}
-		
-		int sum = 0;
-		for (int i = 1; i <= number; i++) {
-			sum += i;
-		}
-		System.out.print("The product of the numbers between 1 and " + number + " is: " + sum);
+		System.out.println("Old vars: " + firstNumber + " " + secondNumber + " " + thirdNumber);
+		int temp = firstNumber;
+		firstNumber = secondNumber;
+		secondNumber = thirdNumber;
+		thirdNumber = temp;
+		System.out.println("Old vars: " + firstNumber + " " + secondNumber + " " + thirdNumber);	
 	}
 }

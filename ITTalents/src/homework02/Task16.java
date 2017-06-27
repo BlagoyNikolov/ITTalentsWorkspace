@@ -4,36 +4,27 @@ import java.util.Scanner;
 
 public class Task16 {
 	public static void main(String[] args) {
+		System.out.println("Enter desired 3 digit number:");
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter desired numbers: [10..5555]");
-		int firstNumber = sc.nextInt();
-		while (firstNumber < 10 || firstNumber > 5555) {
-			System.out.println("Invalid number, try again: [10..5555]");
-			firstNumber = sc.nextInt();
-		}
-		int secondNumber = sc.nextInt();
-		while (secondNumber < 10 || secondNumber > 5555) {
-			System.out.println("Invalid number, try again: [10..5555]");
-			secondNumber = sc.nextInt();
-		}
-		sc.close();
+		int number = sc.nextInt();
 
-		if (firstNumber > secondNumber) {
-			int temp = firstNumber;
-			firstNumber = secondNumber;
-			secondNumber = temp;
+		if (number < 100 || number > 999) {
+			System.out.println("Invalid number try again: [100.. 999]");
+			number = sc.nextInt();
 		}
-		boolean firstPrinted = false;
 
-		for (int i = secondNumber; i >= firstNumber; i--) {
-			if (i % 50 == 0) {
-				if (firstPrinted == false) {
-					System.out.print(i);
-					firstPrinted = true;
-				} else {
-					System.out.print(", " + i);
-				}
-			}
+		int firstDigit = number / 100;
+		int secondDigit = number / 10 % 10;
+		int thirdDigit = number % 10;
+
+		if (firstDigit == secondDigit && secondDigit == thirdDigit) {
+			System.out.println("All digits are equal");
+		} else if (firstDigit > secondDigit && secondDigit > thirdDigit) {
+			System.out.println("Digits are in descending order");
+		} else if (firstDigit < secondDigit && secondDigit < thirdDigit) {
+			System.out.println("Digits are in ascending order");
+		} else {
+			System.out.println("No order in digit positioning");
 		}
 	}
 }

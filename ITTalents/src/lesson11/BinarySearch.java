@@ -5,7 +5,7 @@ public class BinarySearch {
 	public static void main(String[] args) {
 		
 		int[] arr = {1,3,6,7,8,11,31,44,67,88};
-		int x = 45;
+		int x = 8;
 		int result= binarySearch(arr, x, 0, arr.length-1);
 		System.out.println(result);
 	}
@@ -16,7 +16,7 @@ public class BinarySearch {
 	//3.1 if greater - search in left half
 	//3.2 if lesser - search in right half
 	static int binarySearch(int[] masiv, int x, int left, int right){
-		if(left >= right){
+		if(left > right){
 			return -1;
 		}
 		int mid = (left + right) / 2;

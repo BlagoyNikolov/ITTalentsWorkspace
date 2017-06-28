@@ -5,7 +5,7 @@ public class SelectionSortOptimizedAndFixed {
 		// int[] arr = { 6, 4, 8, 5, 2, 11 };
 		// int[] arr = { 8, 11, 6, 10, 5 };
 		// int[] arr = { 9, 0, 1, 6, 2, 4 };
-		//int[] arr = { 7, 1, 6, 2, 4 };
+		// int[] arr = { 7, 1, 6, 2, 4 };
 		int[] arr = { 7, 1, 6, 2, 9 };
 		selectionSortOptimized(arr);
 		print(arr);
@@ -31,18 +31,14 @@ public class SelectionSortOptimizedAndFixed {
 				}
 			}
 			// swap arr[minIndex] with arr[0]
+			int temp = arr[minIndex];
+			arr[minIndex] = arr[i];
+			arr[i] = temp;
+		
 			if (i == maxIndex) {
-				int temp = arr[minIndex];
-				arr[minIndex] = arr[i];
-				arr[i] = temp;
-
 				maxIndex = minIndex;
-			} else {
-				int temp = arr[minIndex];
-				arr[minIndex] = arr[i];
-				arr[i] = temp;
 			}
-
+				
 			int temp2 = arr[maxIndex];
 			arr[maxIndex] = arr[arr.length - 1 - i];
 			arr[arr.length - 1 - i] = temp2;

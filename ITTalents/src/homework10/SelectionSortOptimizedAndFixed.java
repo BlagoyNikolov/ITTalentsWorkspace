@@ -5,7 +5,8 @@ public class SelectionSortOptimizedAndFixed {
 		// int[] arr = { 6, 4, 8, 5, 2, 11 };
 		// int[] arr = { 8, 11, 6, 10, 5 };
 		// int[] arr = { 9, 0, 1, 6, 2, 4 };
-		int[] arr = { 7, 1, 6, 2, 4 };
+		//int[] arr = { 7, 1, 6, 2, 4 };
+		int[] arr = { 7, 1, 6, 2, 9 };
 		selectionSortOptimized(arr);
 		print(arr);
 	}

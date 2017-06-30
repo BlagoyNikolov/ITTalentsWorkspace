@@ -6,7 +6,8 @@ public class Task05 {
 	public static void main(String[] args) {
 		String first = getWord();
 		String second = getWord();
-		crossPrinter(first, second);
+		//crossPrinter(first, second);
+		crossPrinter2(first, second);
 	}
 
 	public static void crossPrinter(String first, String second) {
@@ -27,7 +28,7 @@ public class Task05 {
 			}
 
 		}
-		System.out.println(hasCrossPoint + " " + crossPoint);
+		//System.out.println(hasCrossPoint + " " + crossPoint);
 
 		for (int i = 0; i < first.length(); i++) {
 			if (first.charAt(i) == crossPoint) {
@@ -43,6 +44,32 @@ public class Task05 {
 			}
 		}
 	}
+	
+	public static void crossPrinter2(String first, String second) { 
+		int posCol = 1;
+		int posRow = 1;
+		for (int i = 0; i < second.length(); i++) {
+			posRow = first.indexOf(second.charAt(i));
+			if (posRow == 0) {
+				posCol = i;
+				break;
+			}
+		}
+		char[][] arr = new char[first.length()][second.length()];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i][posCol] = first.charAt(i);
+		}
+		for (int i = 0; i < arr[posRow].length; i++) {
+			arr[posRow][i] = second.charAt(i);
+		}
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr[i].length; j++) {
+				System.out.print(arr[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	
 
 	public static String getWord() {
 		Scanner sc = new Scanner(System.in);

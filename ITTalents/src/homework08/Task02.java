@@ -23,19 +23,25 @@ public class Task02 {
 
 	
 	public static void stringModifier(String first, String second) {
-		String firstSub = first.substring(0, 5);
-		String secondSub = second.substring(0, 5);
+		String firstStart = first.substring(0, 5);
+		String secondStart = second.substring(0, 5);
 		
-		String firstEnd = first.substring(5, first.length());
-		String secondEnd = second.substring(5, second.length());
+//		String firstEnd = first.substring(5, first.length());
+//		String secondEnd = second.substring(5, second.length());
+//		
+//		String newFirstString = secondStart + firstEnd;
+//		String newSecondString = firstStart + secondEnd;
 		
-		String newFirstString = secondSub + firstEnd;
-		String newSecondString = firstSub + secondEnd;
+		first = first.replace(firstStart, secondStart);
+		second = second.replace(secondStart, firstStart);
 		
-		if (newFirstString.length() > newSecondString.length()) {
-			System.out.println(newFirstString + " length: " + newFirstString.length());
+		System.out.println(first);
+		System.out.println(second);
+		
+		if (first.length() > second.length()) {
+			System.out.println(first + " length: " + first.length());
 		} else {
-			System.out.println(newSecondString + " length: " + newSecondString.length());
+			System.out.println(second + " length: " + second.length());
 		}
 	}
 }

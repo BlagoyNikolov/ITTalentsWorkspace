@@ -11,7 +11,7 @@ public class Recursion03 {
 		// System.out.println(sumFact(3, 4));
 		// rec(1, 7);
 		// frameR(0, '8', 9);
-		printTriangle(0, 8);
+		printTriangle(0, 5);
 
 		int[] arr = { 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 3 };
 		findMostFrequent(arr);

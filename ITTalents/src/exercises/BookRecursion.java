@@ -15,6 +15,7 @@ public class BookRecursion {
 		System.out.println(isPrime(108, false, 2));
 		System.out.println(multy(7, 3));
 		System.out.println(powery(2, 6));
+		System.out.println(powerGosho(5, 4));
 	}
 
 	static int fact(int n) {
@@ -153,5 +154,15 @@ public class BookRecursion {
 			temp = multy(temp, x);
 		}
 		return temp;
+	}
+	
+	static int powerGosho(int n, int p) {
+		if (p == 0) {
+			return 1;
+		}
+		if (p == 1) {
+			return n;
+		}
+		return n * powerGosho(n, p - 1);
 	}
 }

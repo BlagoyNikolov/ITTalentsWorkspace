@@ -11,7 +11,7 @@ public class Task06 {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter some words");
 		String input = sc.nextLine();
-		while (input.contains(" ") || input.isEmpty()) {
+		while (input.isEmpty()) {
 			System.out.println("Enter a valid string pls:");
 			input = sc.nextLine();
 		}

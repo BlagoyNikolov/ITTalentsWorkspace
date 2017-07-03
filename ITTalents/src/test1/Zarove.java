@@ -17,8 +17,7 @@ public static void main(String[] args) {
 				if(counterSevens == 7){
 					break;
 				}
-			}
-			else{
+			} else {
 				counterSevens = 0;
 			}
 			countTries++;

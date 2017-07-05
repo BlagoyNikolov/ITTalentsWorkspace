@@ -10,7 +10,7 @@ public class S5T1V2 {
 		int[] arr = { -9, -7, -5, -4, 2, 5, 6, 8 };
 		// dice();
 		System.out.println(binarySearch(arr, 0, arr.length - 1));
-		ratio("¿dwa¿DAdwadSDda¿SdwaDawdsa");
+		ratio("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaa");
 		char[][] matr = { { ' ', '*', ' ', ' ', ' ' }, { ' ', '*', ' ', ' ', ' ' }, { ' ', ' ', ' ', '*', ' ' },
 				{ '*', ' ', '*', ' ', ' ' } };
 
@@ -92,8 +92,20 @@ public class S5T1V2 {
 		}
 	}
 	
-	static void fillAroundBomb(char[][] arr, int i, int j) {
-		
+	static void fillAroundBomb(char[][] matr, int x, int y) {
+		for (int i = -1; i < 2; i++) {
+            for (int j = -1; j < 2; j++) {
+                if(x + i < 0 || x + i == matr.length || y + j < 0 || y + i == matr[0].length){
+                    continue;
+                } else if(matr[x+i][y+j] == '*'){
+                    continue;
+                } else if(matr[x+i][y+j] == ' '){
+                    matr[x+i][y+j] = '1';
+                } else{
+                    matr[x+i][y+j] += 1;
+                }
+            }
+		}
 	}
 
 	static void print(char[][] matr) {

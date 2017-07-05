@@ -8,6 +8,11 @@ public class S6T1V2 {
 		//cards();
 		stringCounter("Simple sentence thatsd is first.", "Another one thatsd is second.", "Third sentence thatsd is last.");
 		System.out.println(sumOfArrayElements(arr, 0));
+		char[][] labyrinth = {{' ', ' ', 'W', 'W'},
+				  			  {'W', ' ', ' ', 'W'},
+				  			  {'W', 'W', ' ', 'W'},
+				  			  {'W', 'W', ' ', ' '}};
+		System.out.println(findPath(labyrinth, 0, 0, 3, 3, 0));
 	}
 	
 	static void cards() {
@@ -68,5 +73,34 @@ public class S6T1V2 {
 		} else {
 			return sumOfArrayElements(arr, i + 1);
 		}
+	}
+	
+	static int findPath(char[][] sheet, int beginI, int beginJ, int endI, int endJ, int steps){
+		steps++;
+		if(sheet[beginI][beginJ] == 'W'){
+			return -1;
+		}
+		sheet[beginI][beginJ] = 'x';
+		if(beginI == endI && beginJ == endJ){
+			return steps;
+		}
+		
+		//i, j+1
+		if((beginJ+1 < sheet[beginI].length) && (sheet[beginI][beginJ+1] == ' ')){
+			return findPath(sheet, beginI, beginJ+1, endI, endJ, steps);
+		}
+		//i, j-1
+		if(beginJ-1 >= 0 && sheet[beginI][beginJ-1] == ' '){
+			return findPath(sheet, beginI, beginJ-1, endI, endJ, steps);
+		}
+		//i+1, j
+		if((beginI+1 < sheet.length) && (sheet[beginI+1][beginJ] == ' ')){
+			return findPath(sheet, beginI+1, beginJ, endI, endJ, steps);
+		}
+		//i-1, j
+		if((beginI-1 >= 0) && (sheet[beginI-1][beginJ] == ' ')){
+			return findPath(sheet, beginI-1, beginJ, endI, endJ, steps);
+		}
+		return steps;
 	}
 }

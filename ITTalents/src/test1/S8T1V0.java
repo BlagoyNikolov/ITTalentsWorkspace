@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class S8T1V0 {
 	public static void main(String[] args) {
-		cards();
+		//cards();
 		String[] output = sorted("Hword Bword Zword Aword");
 		for (int i = 0; i < output.length; i++) {
 			System.out.print(output[i] + " ");

@@ -1,5 +1,7 @@
 package homework13;
 
+import java.util.Random;
+
 public class MortalKombat {
 	public static void main(String[] args) {
 		Fighter subZero = new Fighter();
@@ -25,6 +27,16 @@ public class MortalKombat {
 			}
 			else{
 				scorpion.hit();
+			}
+			float chance = new Random().nextFloat();
+			if (chance <= 0.03f && !scorpion.isDead()) {
+				scorpion.health += 30;
+				System.err.println(scorpion.name + " found the Domashnqrka!");
+			}
+			chance = new Random().nextFloat();
+			if (chance <= 0.03f && !subZero.isDead()) {
+				subZero.health += 30;
+				System.err.println(subZero.name + " found the Domashnqrka!");
 			}
 		}
 	}

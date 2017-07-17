@@ -42,7 +42,7 @@ public class CarShop {
 		return null;
 	}
 
-	void sellNextCar(Person buyer) {
+	public void sellNextCar(Person buyer) {
 		Car carToSell = this.getNextCar();
 		buyer.buyCar(carToSell);
 		carToSell.setOwner(buyer);
@@ -50,9 +50,10 @@ public class CarShop {
 		System.out.println("Car " + carToSell.getBrand() + " " + carToSell.getModel() + " successfully sold to " + carToSell.getOwner().getName() + " for " + carToSell.getPrice());
 	}
 
-	boolean removeCar(Car car) {
+	public boolean removeCar(Car car) {
 		for (int i = 0; i < this.getCars().length; i++) {
-			if (this.getCars()[i].getBrand().equals(car.getBrand()) && this.getCars()[i].getModel().equals(car.getModel())) {
+			//if (this.getCars()[i].getBrand().equals(car.getBrand()) && this.getCars()[i].getModel().equals(car.getModel())) {
+			if (this.getCars()[i].equals(car)) {
 				this.getCars()[i] = null;
 				return true;
 			}
@@ -60,7 +61,7 @@ public class CarShop {
 		return false;
 	}
 
-	void showAllCarsInTheShop() {
+	public void showAllCarsInTheShop() {
 		for (int i = 0; i < this.getCars().length; i++) {
 			if (this.getCars()[i] != null) {
 				//System.out.println("Brand: " + this.getCars()[i].brand + ", Model: " + this.getCars()[i].model + ", Color " + this.getCars()[i].color + ", Price: " + this.getCars()[i].price + ", Owner: " + this.getCars()[i].owner.name);

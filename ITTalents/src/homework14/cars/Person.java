@@ -108,7 +108,7 @@ public class Person {
 		this.setWeight(4.0);
 	}
 	
-	Person(String name, long personalNumber, boolean isMale) {
+	public Person(String name, long personalNumber, boolean isMale) {
 		this();
 		this.setName(name);
 		this.setPersonalNumber(personalNumber);
@@ -116,7 +116,7 @@ public class Person {
 		this.setFriends(new Person[3]);
 	}
 	
-	void buyCar(Car car) {
+	public void buyCar(Car car) {
 		if (this.getMoney() >= car.getPrice()) {
 			this.money -= car.getPrice();
 			this.setCar(car);
@@ -125,17 +125,17 @@ public class Person {
 		}
 	}
 	
-	double sellCarForScrap() {
+	public double sellCarForScrap() {
 		double scrapMoney = this.car.calculateCarPriceForScrap(0.5);
 		this.money += scrapMoney;
 		return this.money;
 	}
 
-	void eat() {
+	public void eat() {
 		System.out.println(name + " is eating");
 	}
 	
-	void growUp() {
+	public void growUp() {
 		age++;
 	}
 }

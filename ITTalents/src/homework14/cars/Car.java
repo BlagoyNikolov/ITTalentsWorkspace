@@ -91,11 +91,11 @@ public class Car {
 		this.setPrice(price);
 	}
 	
-	boolean isMoreExpensive(Car car) {
+	public boolean isMoreExpensive(Car car) {
 		return this.getPrice() > car.getPrice();
 	}
 	
-	double calculateCarPriceForScrap(double metalPrice) {
+	public double calculateCarPriceForScrap(double metalPrice) {
 		double coef = 0.2;
 		if (this.getColor().equals("black") || this.getColor().equals("white")) {
 			coef += 0.05;
@@ -106,31 +106,39 @@ public class Car {
 		return metalPrice * coef;
 	}
 	
-	void accelerate(){
+	public void accelerate(){
 		if (currentSpeed < maxSpeed) {
 			currentSpeed++;	
 		}
 	}
 	
-	void changegearUp() {
+	public void changegearUp() {
 		if (currengear >= 1 && currengear < 5) {
 			currengear++;
 		}
 	}
 	
-	void changegearDown() {
+	public void changegearDown() {
 		if (currengear > 1 && currengear <= 5) {
 			currengear--;
 		}
 	}
 	
-	void changeGear(int nextGear) {
+	public void changeGear(int nextGear) {
 		if (currengear >= 1 && currengear <= 5) {
 			currengear = nextGear;
 		}
 	}
 	
-	void changeColor(String newColor) {
+	public void changeColor(String newColor) {
 		setColor(newColor);
 	}
+	
+	
+//	public boolean equals(Car c) {
+//		if (this.getBrand().equals(c.getBrand()) && this.getModel().equals(c.getModel())) {
+//			return true;
+//		} 
+//		return false;
+//	}
 }

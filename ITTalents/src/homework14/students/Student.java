@@ -82,7 +82,7 @@ public class Student {
 	}
 
 	public void setMoney(double money) {
-		if (money > 0) {
+		if (money >= 0) {
 			this.money = money;
 		} else {
 			System.out.println("Invalid money");

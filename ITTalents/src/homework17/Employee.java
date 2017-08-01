@@ -80,14 +80,16 @@ public class Employee {
 		if (this.getHoursLeft() > this.getCurrentTask().getWorkingHours()) {
 			this.setHoursLeft(this.getHoursLeft() - this.getCurrentTask().getWorkingHours());
 			this.getCurrentTask().setWorkingHours(0);
+			showReport();
 		} else if (this.getHoursLeft() < this.getCurrentTask().getWorkingHours()) {
 			this.getCurrentTask().setWorkingHours(this.getCurrentTask().getWorkingHours() - this.getHoursLeft());
 			this.setHoursLeft(0);
+			showReport();
 		} else if (this.getHoursLeft() == this.getCurrentTask().getWorkingHours()) {
 			this.setHoursLeft(0);
 			this.getCurrentTask().setWorkingHours(0);
+			showReport();
 		}
-		System.out.println(this.getCurrentTask().getName() + " being done by " + this.getName());
 	}
 
 	public void showReport() {

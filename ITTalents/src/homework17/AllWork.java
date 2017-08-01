@@ -46,14 +46,14 @@ public class AllWork {
 		for (int i = currentUnassignedTask; i < tasks.length - 1; i++) {
 			if (tasks[i] != null) {
 				Task task = tasks[i];
-				// tasks[i]= null;
+				//tasks[i]= null;
 				currentUnassignedTask++;
 				return task;
 			}
 		}
 		if (tasks[tasks.length - 1] != null) {
 			Task task = tasks[tasks.length - 1];
-			tasks[tasks.length - 1] = null;
+			//tasks[tasks.length - 1] = null;
 			currentUnassignedTask = -1;
 			return task;
 		}
@@ -63,7 +63,8 @@ public class AllWork {
 	public boolean isAllWorkDone() {
 		boolean flag = false;
 		for (int i = 0; i < this.getTasks().length; i++) {
-			if (this.getTasks()[i] == null && this.getTasks()[i].getWorkingHours() == 0) {
+			//this.getTasks()[i] == null || 
+			if (this.getTasks()[i].getWorkingHours() == 0) {
 				flag = true;
 			} else {
 				flag = false;

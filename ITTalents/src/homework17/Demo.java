@@ -36,20 +36,11 @@ public class Demo {
 			System.out.println("-------");
 			blago.startWorkingDay();
 			blago.work();
-			System.out.println("-------");
 			i++;
 			if (allWork.isAllWorkDone()) {
 				break;
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
 		
 //		Employee ivan = new Employee("Ivan");
 //		Task task1 = new Task("coding", 7);

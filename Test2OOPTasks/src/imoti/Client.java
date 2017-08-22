@@ -1,11 +1,11 @@
 package imoti;
 
 public abstract class Client {
-	private String name;
+	protected  String name;
 	private String phone;
 	private Agent agent;
-	private Agency agency;
-	private double budget;
+	protected Agency agency;
+	protected double budget;
 	
 	public String getName() {
 		return name;

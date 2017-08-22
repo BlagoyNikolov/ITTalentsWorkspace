@@ -2,16 +2,18 @@ package imoti;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.TreeSet;
+import java.util.Iterator;
 
 public class Agency {
 	private String name;
 	private String address;
 	private String phone;
-	private ArrayList<Agent> agents;
+	private TreeSet<Agent> agents;
 	private ArrayList<Imot> ads;
 	private double balance;
 	
-	public ArrayList<Agent> getAgents() {
+	public TreeSet<Agent> getAgents() {
 		return agents;
 	}
 	
@@ -27,7 +29,7 @@ public class Agency {
 		this.balance = balance;
 	}
 	
-	public Agency(String name, String address, String phone, ArrayList<Agent> agents, ArrayList<Imot> ads) {
+	public Agency(String name, String address, String phone, TreeSet<Agent> agents, ArrayList<Imot> ads) {
 		this.name = name;
 		this.address = address;
 		this.phone = phone;
@@ -36,7 +38,15 @@ public class Agency {
 	}
 	
 	public Agent getRandomAgent() {
-		return getAgents().get(new Random().nextInt(getAgents().size()));
+		int r = new Random().nextInt(getAgents().size());
+		int i = 0;
+		for (Iterator iterator = getAgents().iterator(); iterator.hasNext();i++) {
+			Agent a = (Agent) iterator.next();
+			if (i == r) {
+				return a;
+			}
+		}
+		return null;
 	}
 	
 	public void addImotToAds(Imot imot) {
@@ -50,5 +60,13 @@ public class Agency {
 	public void addFundsToBalance(double amount, Agent agent) {
 		agent.receiveMoney(amount / 2);
 		this.setBalance(this.getBalance() + amount / 2);
+	}
+	
+	public void printAgents() {
+//		for (Agent a : getAgents()) {
+//			a.printAgentInfo();
+//		}
+		
+		System.out.println(agents);
 	}
 }

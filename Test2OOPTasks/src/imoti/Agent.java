@@ -1,12 +1,13 @@
 package imoti;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
-public class Agent {
+public class Agent implements Comparable<Agent> {
 	private String name;
 	private String phone;
-	private ArrayList<Seller> sellers;
-	private ArrayList<Buyer> buyers;
+	private HashSet<Seller> sellers;
+	private HashSet<Buyer> buyers;
 	private ArrayList<View> views;
 	private double money;
 	
@@ -14,11 +15,11 @@ public class Agent {
 		return name;
 	}
 	
-	public ArrayList<Seller> getSellers() {
+	public HashSet<Seller> getSellers() {
 		return sellers;
 	}
 	
-	public ArrayList<Buyer> getBuyers() {
+	public HashSet<Buyer> getBuyers() {
 		return buyers;
 	}
 	
@@ -30,9 +31,8 @@ public class Agent {
 		this.money = money;
 	}
 	
-	public Agent(String name, String phone, ArrayList<Seller> sellers, ArrayList<Buyer> buyers, ArrayList<View> views) {
+	public Agent(String name, HashSet<Seller> sellers, HashSet<Buyer> buyers, ArrayList<View> views) {
 		this.name = name;
-		this.phone = phone;
 		this.sellers = sellers;
 		this.buyers = buyers;
 		this.views = views;
@@ -47,11 +47,21 @@ public class Agent {
 	}
 	
 	public void receiveMoney(double amount) {
-		this.setMoney(this.getMoney() + amount);
+		this.money += amount;
 	}
 	
-	public void agentInfo() {
-		System.out.println("-----Agent-----");
-		System.out.println("Name: " + this.getName() + ", Budget: " + this.getMoney());
+	@Override
+	public String toString() {
+		return "-----Agent-----\nName: " + this.getName() + ", Budget: " + this.getMoney() + "\n";
 	}
+
+	@Override
+	public int compareTo(Agent agent) {
+		if (this.getMoney() == agent.getMoney()) {
+			return this.getName().compareTo(agent.getName());
+		}
+		return (int)(this.getMoney() - agent.getMoney());
+	}
+	
+
 }

@@ -1,13 +1,15 @@
 package imoti;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.TreeSet;
 
 public class Demo {
 	public static void main(String[] args) {
-		ArrayList<Agent> agents = new ArrayList<>();
+		TreeSet<Agent> agents = new TreeSet<>();
 		for (int i = 1; i <= 5; i++) {
-			agents.add(new Agent("Agent" + i, "0887 898 792", new ArrayList<Seller>(), new ArrayList<Buyer>(), new ArrayList<View>()));
+			agents.add(new Agent("Agent" + i, new HashSet<Seller>(), new HashSet<Buyer>(), new ArrayList<View>()));
 		}
 		Agency talens = new Agency("Talents express", "Infinity Tower", "0888 888 888", agents, new ArrayList<Imot>());
 		
@@ -50,9 +52,6 @@ public class Demo {
 			buyer.declarePurchase();
 		}
 		
-		System.out.println("Agency balance after purchases: " + talens.getBalance());
-		for (Agent agent : talens.getAgents()) {
-			agent.agentInfo();
-		}
+		talens.printAgents();
 	}
 }

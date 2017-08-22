@@ -14,6 +14,7 @@ public class Bakery {
 	private String address;
 	private String phone;
 	private ArrayList<Cake> cakes;
+	//private HashMap<Cake, TreeMap<Cake.Type, List<cake.enum>>> cakes;
 	private ArrayList<Supplier> suppliers;
 	private double money;
 	

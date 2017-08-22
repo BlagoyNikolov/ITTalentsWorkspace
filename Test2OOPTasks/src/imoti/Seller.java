@@ -28,4 +28,15 @@ public class Seller extends Client {
 		System.out.println(this.getImot().imotInfo());
 		System.out.println();
 	}
+	
+	@Override
+	public int hashCode() {
+		return this.name.hashCode() + this.agency.hashCode() + (int) this.budget;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Seller s = (Seller) obj;
+		return this.name.equals(s.name) && this.agency.equals(s.agency) && (this.budget == s.budget);
+	}
 }

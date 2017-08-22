@@ -1,15 +1,16 @@
 package cakes.bakery;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Supplier {
 	private String name;
 	private String phone;
-	private ArrayList<Order> orders;
+	private HashSet<Order> orders;
 	private double money;
 	private int orderCount = 0;
 	
-	public ArrayList<Order> getOrders() {
+	public HashSet<Order> getOrders() {
 		return orders;
 	}
 	
@@ -23,7 +24,7 @@ public class Supplier {
 	
 	public Supplier(String name) {
 		this.name = name;
-		this.orders = new ArrayList<>();
+		this.orders = new HashSet<>();
 	}
 	
 	public void addMoney(double money) {

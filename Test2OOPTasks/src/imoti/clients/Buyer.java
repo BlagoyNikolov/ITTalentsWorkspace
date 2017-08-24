@@ -1,7 +1,11 @@
-package imoti;
+package imoti.clients;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import imoti.agency.Agency;
+import imoti.agency.Agent;
+import imoti.estates.Imot;
 
 public class Buyer extends Client {
 	private ArrayList<View> views;

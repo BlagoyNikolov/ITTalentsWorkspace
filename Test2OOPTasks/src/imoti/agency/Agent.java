@@ -1,7 +1,11 @@
-package imoti;
+package imoti.agency;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+
+import imoti.clients.Buyer;
+import imoti.clients.Seller;
+import imoti.clients.View;
 
 public class Agent implements Comparable<Agent> {
 	private String name;

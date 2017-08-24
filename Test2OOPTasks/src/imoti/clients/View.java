@@ -1,6 +1,9 @@
-package imoti;
+package imoti.clients;
 
 import java.time.LocalDate;
+
+import imoti.agency.Agent;
+import imoti.estates.Imot;
 
 public class View {
 	private Imot imot;

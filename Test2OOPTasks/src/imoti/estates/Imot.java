@@ -1,4 +1,7 @@
-package imoti;
+package imoti.estates;
+
+import imoti.agency.Agent;
+import imoti.clients.Seller;
 
 public abstract class Imot {
 	private String description;

@@ -1,20 +1,25 @@
-package imoti;
+package imoti.estates;
 
 import java.util.Random;
 
-public class Appartment extends Imot {
-	private AppartmentType type;
+import imoti.estates.Appartment.AppartmentType;
+import imoti.estates.Appartment.ConstructionType;
+
+public class House extends Imot {
+	private HouseType type;
 	private ConstructionType constructionType;
+	private int parkoplaces;
+	private double lawnArea;
 	
-	public enum AppartmentType {
-		STUDIO, GARCIONERA, DVUSTAEN, TRISTAEN, MAISONETTE;
+	public enum HouseType {
+		ETAJ, CQLA;
 	}
 	
 	public enum ConstructionType {
 		EPK, BRICK, PANEL, KIRPICH;
 	}
 	
-	public AppartmentType getType() {
+	public HouseType getType() {
 		return type;
 	}
 	
@@ -22,25 +27,21 @@ public class Appartment extends Imot {
 		return constructionType;
 	}
 	
-	public Appartment(String description, String address, double price, int area, AppartmentType type, ConstructionType constructionType) {
+	public House(String description, String address, double price, int area, HouseType type, ConstructionType constructionType, int parkoplaces, double lawnArea) {
 		super(description, address, price, area);
 		this.type = type;
 		this.constructionType = constructionType;
+		this.parkoplaces = parkoplaces;
+		this.lawnArea = lawnArea;
 	}
-
-	public static AppartmentType getRandomType() {
-		int x = new Random().nextInt(5);
+	
+	public static HouseType getRandomType() {
+		int x = new Random().nextInt(2);
 		switch (x) {
 		case 0:
-			return AppartmentType.STUDIO;
+			return HouseType.ETAJ;
 		case 1:
-			return AppartmentType.GARCIONERA;
-		case 2:
-			return AppartmentType.DVUSTAEN;
-		case 3:
-			return AppartmentType.TRISTAEN;
-		case 4:
-			return AppartmentType.MAISONETTE;
+			return HouseType.CQLA;
 		}
 		return null;
 	}
@@ -59,7 +60,7 @@ public class Appartment extends Imot {
 		}
 		return null;
 	}
-
+	
 	@Override
 	public String imotInfo() {
 		return "Type: " + this.getType() + " " + this.getConstructionType() + " Price: " + this.getPrice() + " Area: " + getArea() + " Seller: " + this.getSeller().getName();

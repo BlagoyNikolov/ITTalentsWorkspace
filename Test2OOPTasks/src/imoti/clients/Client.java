@@ -1,4 +1,7 @@
-package imoti;
+package imoti.clients;
+
+import imoti.agency.Agency;
+import imoti.agency.Agent;
 
 public abstract class Client {
 	protected  String name;

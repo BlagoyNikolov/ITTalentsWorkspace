@@ -5,6 +5,16 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.TreeSet;
 
+import imoti.agency.Agency;
+import imoti.agency.Agent;
+import imoti.clients.Buyer;
+import imoti.clients.Seller;
+import imoti.clients.View;
+import imoti.estates.Appartment;
+import imoti.estates.House;
+import imoti.estates.Imot;
+import imoti.estates.Parcel;
+
 public class Demo {
 	public static void main(String[] args) {
 		TreeSet<Agent> agents = new TreeSet<>();

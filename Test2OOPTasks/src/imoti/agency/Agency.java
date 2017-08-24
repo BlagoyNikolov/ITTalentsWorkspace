@@ -1,8 +1,11 @@
-package imoti;
+package imoti.agency;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.TreeSet;
+
+import imoti.estates.Imot;
+
 import java.util.Iterator;
 
 public class Agency {

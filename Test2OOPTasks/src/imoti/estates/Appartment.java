@@ -1,25 +1,20 @@
-package imoti;
+package imoti.estates;
 
 import java.util.Random;
 
-import imoti.Appartment.AppartmentType;
-import imoti.Appartment.ConstructionType;
-
-public class House extends Imot {
-	private HouseType type;
+public class Appartment extends Imot {
+	private AppartmentType type;
 	private ConstructionType constructionType;
-	private int parkoplaces;
-	private double lawnArea;
 	
-	public enum HouseType {
-		ETAJ, CQLA;
+	public enum AppartmentType {
+		STUDIO, GARCIONERA, DVUSTAEN, TRISTAEN, MAISONETTE;
 	}
 	
 	public enum ConstructionType {
 		EPK, BRICK, PANEL, KIRPICH;
 	}
 	
-	public HouseType getType() {
+	public AppartmentType getType() {
 		return type;
 	}
 	
@@ -27,21 +22,25 @@ public class House extends Imot {
 		return constructionType;
 	}
 	
-	public House(String description, String address, double price, int area, HouseType type, ConstructionType constructionType, int parkoplaces, double lawnArea) {
+	public Appartment(String description, String address, double price, int area, AppartmentType type, ConstructionType constructionType) {
 		super(description, address, price, area);
 		this.type = type;
 		this.constructionType = constructionType;
-		this.parkoplaces = parkoplaces;
-		this.lawnArea = lawnArea;
 	}
-	
-	public static HouseType getRandomType() {
-		int x = new Random().nextInt(2);
+
+	public static AppartmentType getRandomType() {
+		int x = new Random().nextInt(5);
 		switch (x) {
 		case 0:
-			return HouseType.ETAJ;
+			return AppartmentType.STUDIO;
 		case 1:
-			return HouseType.CQLA;
+			return AppartmentType.GARCIONERA;
+		case 2:
+			return AppartmentType.DVUSTAEN;
+		case 3:
+			return AppartmentType.TRISTAEN;
+		case 4:
+			return AppartmentType.MAISONETTE;
 		}
 		return null;
 	}
@@ -60,7 +59,7 @@ public class House extends Imot {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public String imotInfo() {
 		return "Type: " + this.getType() + " " + this.getConstructionType() + " Price: " + this.getPrice() + " Area: " + getArea() + " Seller: " + this.getSeller().getName();

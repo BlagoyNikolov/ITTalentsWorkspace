@@ -1,4 +1,8 @@
-package imoti;
+package imoti.clients;
+
+import imoti.agency.Agency;
+import imoti.agency.Agent;
+import imoti.estates.Imot;
 
 public class Seller extends Client {
 	private Imot imot;

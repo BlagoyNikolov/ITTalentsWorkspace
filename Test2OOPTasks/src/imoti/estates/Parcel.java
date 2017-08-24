@@ -1,4 +1,4 @@
-package imoti;
+package imoti.estates;
 
 public class Parcel extends Imot {
 	private boolean isInRegulation;

@@ -1,30 +1,40 @@
 package imoti.agency;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 import imoti.clients.Buyer;
+import imoti.clients.IViewOperations;
 import imoti.clients.Seller;
 import imoti.clients.View;
 
-public class Agent implements Comparable<Agent> {
+public class Agent implements Comparable<Agent>, IViewOperations {
 	private String name;
 	private String phone;
-	private HashSet<Seller> sellers;
-	private HashSet<Buyer> buyers;
+	private Set<Seller> sellers;
+	private Set<Buyer> buyers;
 	private ArrayList<View> views;
 	private double money;
+	
+	public Agent(String name) {
+		this.name = name;
+		this.sellers = new HashSet<Seller>();
+		this.buyers = new HashSet<Buyer>();
+		this.views = new ArrayList<View>();
+	}
 	
 	public String getName() {
 		return name;
 	}
 	
-	public HashSet<Seller> getSellers() {
-		return sellers;
+	public Set<Seller> getSellers() {
+		return Collections.unmodifiableSet(sellers);
 	}
 	
-	public HashSet<Buyer> getBuyers() {
-		return buyers;
+	public Set<Buyer> getBuyers() {
+		return Collections.unmodifiableSet(buyers);
 	}
 	
 	public double getMoney() {
@@ -35,11 +45,20 @@ public class Agent implements Comparable<Agent> {
 		this.money = money;
 	}
 	
-	public Agent(String name, HashSet<Seller> sellers, HashSet<Buyer> buyers, ArrayList<View> views) {
-		this.name = name;
-		this.sellers = sellers;
-		this.buyers = buyers;
-		this.views = views;
+	public void addSeller(Seller s) {
+		if (s != null) {
+			this.sellers.add(s);
+		} else {
+			System.out.println("Invalid Seller");
+		}
+	}
+	
+	public void addBuyer(Buyer b) {
+		if (b != null) {
+			this.buyers.add(b);
+		} else {
+			System.out.println("Invalid Buyer");
+		}
 	}
 	
 	public void addViewToViews(View view) {
@@ -64,8 +83,7 @@ public class Agent implements Comparable<Agent> {
 		if (this.getMoney() == agent.getMoney()) {
 			return this.getName().compareTo(agent.getName());
 		}
-		return (int)(this.getMoney() - agent.getMoney());
+		return (int) ((100 * this.getMoney()) - (100 * agent.getMoney()));
+//		return Double.compare(this.getMoney(), agent.getMoney());
 	}
-	
-
 }

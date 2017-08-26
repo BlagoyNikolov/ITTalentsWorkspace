@@ -2,17 +2,26 @@ package imoti.clients;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 import imoti.agency.Agency;
 import imoti.agency.Agent;
 import imoti.estates.Imot;
 
-public class Buyer extends Client {
-	private ArrayList<View> views;
+public class Buyer extends Client implements IViewOperations {
+	public static final double PERCENT = 0.03;
+	private List<View> views;
 	private Imot imot;
 	
-	public ArrayList<View> getViews() {
-		return views;
+	public Buyer(String name, String phone, double budget, Agency agency) {
+		super(name, phone, agency, budget);
+		this.views = new ArrayList<>();
+	}
+	
+	public List<View> getViews() {
+		return Collections.unmodifiableList(views);
 	}
 	
 	public void setImot(Imot imot) {
@@ -23,16 +32,18 @@ public class Buyer extends Client {
 		}
 	}
 	
-	public Buyer(String name, String phone, double budget, Agency agency) {
-		super(name, phone, agency, budget);
-		this.views = new ArrayList<>();
+	public void addViewToViews(View view) {
+		if (view != null) {
+			this.views.add(view);
+		} else {
+			System.out.println("Invalid view");
+		}
 	}
 
 	public void registerImotEnquiry() {
 		Agent a = this.getAgency().getRandomAgent();
 		this.setAgent(a);
-		// TODO fix dis
-		a.getBuyers().add(this);
+		a.addBuyer(this);
 	}
 	
 	public void declareView(Imot imot) {
@@ -46,28 +57,23 @@ public class Buyer extends Client {
 	}
 	
 	public void declarePurchase() {
+//		int x = new Random().nextInt(this.getViews().size());
+//		System.err.println(x);
+//		View view = this.getViews().get(x);
+		
 		for (View view : this.getViews()) {
 			Imot imot = view.getImot();
 			this.setImot(imot);
-			//TODO method pay
-			this.setBudget(this.getBudget() - imot.getPrice());
-			//TODO remove magic numbers
-			this.getAgency().addFundsToBalance((imot.getPrice() * 0.03), this.getAgent());
-			this.setBudget(this.getBudget() - (imot.getPrice() * 0.03));
 			
-			this.getAgency().addFundsToBalance((imot.getPrice() * 0.03), this.getAgent());
-			imot.getSeller().setBudget(this.getBudget() - (imot.getPrice() * 0.03));
-			this.getAgency().getAds().remove(imot);
-			System.out.println("Success! " + this.getName() + " just bought a " + imot.imotInfo());
+			this.removeBudget(imot.getPrice());
+			this.getAgency().addFundsToBalance((imot.getPrice() * PERCENT), this.getAgent());
+			this.removeBudget(imot.getPrice() * PERCENT);
+			
+			this.getAgency().addFundsToBalance((imot.getPrice() * PERCENT), this.getAgent());
+			imot.getSeller().removeBudget(imot.getPrice() * PERCENT);
+			this.getAgency().removeImotFromCatalogue(imot);
+			System.out.println("Success! " + this.getName() + " just bought a " + imot.imotInfo() + " remaining money: " + this.getBudget());
 			break;
-		}
-	}
-	
-	public void addViewToViews(View view) {
-		if (view != null) {
-			this.views.add(view);
-		} else {
-			System.out.println("Invalid view");
 		}
 	}
 	

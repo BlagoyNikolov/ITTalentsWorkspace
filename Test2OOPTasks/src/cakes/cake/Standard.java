@@ -2,17 +2,18 @@ package cakes.cake;
 
 import java.util.Random;
 
+import imoti.estates.Imot;
+
 public class Standard extends Cake {
 	private boolean isWithSyrop;
 	private StandardCakeType standardCakeType;
 	
-	public enum StandardCakeType {
+	public enum StandardCakeType implements IKind {
 		BISCUIT, ECLAIRE, FRUIT, CHOCOLATE;
 	}
 	
 	public Standard(double price, int pieces, StandardCakeType standardCakeType) {
-		super(price, pieces);
-		this.standardCakeType = standardCakeType;
+		super(Cake.Type.STANDARD, standardCakeType, price, pieces);
 	}
 
 	public Standard(String name, String description, double price, int pieces, boolean isWithSyrop, StandardCakeType standardCakeType) {
@@ -44,5 +45,10 @@ public class Standard extends Cake {
 	public String toString() {
 		return "Standard [isWithSyrop=" + isWithSyrop + ", standardCakeType=" + standardCakeType + ", price=" + price
 				+ "]\n";
+	}
+	
+	@Override
+	public int compareTo(Cake o) {
+		return Double.compare(o.getPrice(), this.getPrice());
 	}
 }

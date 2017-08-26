@@ -1,6 +1,5 @@
 package cakes.bakery;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Supplier {
@@ -9,6 +8,11 @@ public class Supplier {
 	private HashSet<Order> orders;
 	private double money;
 	private int orderCount = 0;
+	
+	public Supplier(String name) {
+		this.name = name;
+		this.orders = new HashSet<>();
+	}
 	
 	public HashSet<Order> getOrders() {
 		return orders;
@@ -22,9 +26,8 @@ public class Supplier {
 		this.money = money;
 	}
 	
-	public Supplier(String name) {
-		this.name = name;
-		this.orders = new HashSet<>();
+	public int getOrderCount() {
+		return orderCount;
 	}
 	
 	public void addMoney(double money) {
@@ -42,9 +45,5 @@ public class Supplier {
 	@Override
 	public String toString() {
 		return "Supplier [name=" + name + "] orders: " + this.orderCount;
-	}
-
-	public int getOrderCount() {
-		return orderCount;
 	}
 }

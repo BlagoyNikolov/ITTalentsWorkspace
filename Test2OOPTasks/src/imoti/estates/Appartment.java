@@ -4,28 +4,23 @@ import java.util.Random;
 
 public class Appartment extends Imot {
 	private AppartmentType type;
-	private ConstructionType constructionType;
+	private BuildType buildType;
 	
-	public enum AppartmentType {
+	public enum AppartmentType implements IType {
 		STUDIO, GARCIONERA, DVUSTAEN, TRISTAEN, MAISONETTE;
 	}
 	
-	public enum ConstructionType {
-		EPK, BRICK, PANEL, KIRPICH;
+	public Appartment(String description, String address, double price, int area, AppartmentType type, BuildType buildType) {
+		super(Imot.Category.APARTAMENT, description, address, price, type, area);
+		this.buildType = buildType;
 	}
 	
-	public AppartmentType getType() {
+	public IType getAppartmentType() {
 		return type;
 	}
 	
-	public ConstructionType getConstructionType() {
-		return constructionType;
-	}
-	
-	public Appartment(String description, String address, double price, int area, AppartmentType type, ConstructionType constructionType) {
-		super(description, address, price, area);
-		this.type = type;
-		this.constructionType = constructionType;
+	public BuildType getBuildType() {
+		return buildType;
 	}
 
 	public static AppartmentType getRandomType() {
@@ -45,23 +40,23 @@ public class Appartment extends Imot {
 		return null;
 	}
 	
-	public static ConstructionType getRandomConstructiontype() {
+	public static BuildType getRandomConstructiontype() {
 		int x = new Random().nextInt(4);
 		switch (x) {
 		case 0:
-			return ConstructionType.EPK;
+			return BuildType.EPK;
 		case 1:
-			return ConstructionType.BRICK;
+			return BuildType.BRICK;
 		case 2:
-			return ConstructionType.PANEL;
+			return BuildType.PANEL;
 		case 3:
-			return ConstructionType.KIRPICH;
+			return BuildType.KIRPICH;
 		}
 		return null;
 	}
 
 	@Override
 	public String imotInfo() {
-		return "Type: " + this.getType() + " " + this.getConstructionType() + " Price: " + this.getPrice() + " Area: " + getArea() + " Seller: " + this.getSeller().getName();
+		return "APPARTMENT Type: " + this.getAppartmentType() + " " + this.getBuildType() + " Price: " + this.getPrice() + " Area: " + getArea() + " Seller: " + this.getSeller().getName();
 	}
 }

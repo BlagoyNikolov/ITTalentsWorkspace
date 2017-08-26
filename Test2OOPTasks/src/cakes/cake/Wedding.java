@@ -6,13 +6,12 @@ public class Wedding extends Cake{
 	private int numberOfLevels;
 	private WeddingCakeType weddingCakeType;
 	
-	public enum WeddingCakeType {
+	public enum WeddingCakeType implements IKind {
 		BIG, SMALL, MEDIUM;
 	}
 	
 	public Wedding(double price, int pieces, WeddingCakeType weddingCakeType) {
-		super(price, pieces);
-		this.weddingCakeType = weddingCakeType;
+		super(Cake.Type.WEDDING, weddingCakeType, price, pieces);
 	}
 
 	public Wedding(String name, String description, double price, int pieces, int numberOfLevels, WeddingCakeType weddingCakeType) {
@@ -42,5 +41,13 @@ public class Wedding extends Cake{
 	public String toString() {
 		return "Wedding [numberOfLevels=" + numberOfLevels + ", weddingCakeType=" + weddingCakeType + ", price=" + price
 				+ "]\n";
+	}
+	
+	@Override
+	public int compareTo(Cake o) {
+		if (o instanceof Juvenile) {
+			return this.pieces - o.pieces;
+		}
+		return Double.compare(o.getPrice(), this.getPrice());
 	}
 }

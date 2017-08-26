@@ -30,8 +30,12 @@ public abstract class Client {
 		return budget;
 	}
 	
-	public void setBudget(double budget) {
-		this.budget = budget;
+	public void addBudget(double budget) {
+		this.budget += budget;
+	}
+	
+	public void removeBudget(double budget) {
+		this.budget -= budget;
 	}
 	
 	public Client(String name, String phone, Agency agency, double budget) {

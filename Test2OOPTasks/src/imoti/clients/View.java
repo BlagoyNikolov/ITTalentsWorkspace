@@ -21,6 +21,4 @@ public class View {
 		this.buyer = buyer;
 		this.date = date;
 	}
-	
-	
 }

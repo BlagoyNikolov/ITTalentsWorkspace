@@ -1,7 +1,6 @@
 package cakes.clients;
 
 import java.util.ArrayList;
-
 import cakes.bakery.Bakery;
 import cakes.cake.Cake;
 
@@ -20,12 +19,12 @@ public abstract class Client {
 		this.money = money;
 	}
 	
-	public void addCake(Cake c) {
-		this.cakes.add(c);
-	}
-	
 	public double getPayedMoney() {
 		return payedMoney;
+	}
+	
+	public void addCake(Cake c) {
+		this.cakes.add(c);
 	}
 	
 	public void payMoney(double money) {
@@ -34,5 +33,4 @@ public abstract class Client {
 	
 	public abstract void makeOrder();
 	public abstract double getDiscount();
-	
 }

@@ -2,37 +2,29 @@ package imoti.estates;
 
 import java.util.Random;
 
-import imoti.estates.Appartment.AppartmentType;
-import imoti.estates.Appartment.ConstructionType;
-
 public class House extends Imot {
 	private HouseType type;
-	private ConstructionType constructionType;
+	private BuildType buildType;
 	private int parkoplaces;
 	private double lawnArea;
 	
-	public enum HouseType {
+	public enum HouseType implements IType {
 		ETAJ, CQLA;
 	}
 	
-	public enum ConstructionType {
-		EPK, BRICK, PANEL, KIRPICH;
+	public House(String description, String address, double price, int area, HouseType type, BuildType buildType, int parkoplaces, double lawnArea) {
+		super(Imot.Category.HOUSE, description, address, price, type, area);
+		this.buildType = buildType;
+		this.parkoplaces = parkoplaces;
+		this.lawnArea = lawnArea;
 	}
 	
 	public HouseType getType() {
 		return type;
 	}
 	
-	public ConstructionType getConstructionType() {
-		return constructionType;
-	}
-	
-	public House(String description, String address, double price, int area, HouseType type, ConstructionType constructionType, int parkoplaces, double lawnArea) {
-		super(description, address, price, area);
-		this.type = type;
-		this.constructionType = constructionType;
-		this.parkoplaces = parkoplaces;
-		this.lawnArea = lawnArea;
+	public BuildType getBuildType() {
+		return buildType;
 	}
 	
 	public static HouseType getRandomType() {
@@ -46,23 +38,23 @@ public class House extends Imot {
 		return null;
 	}
 	
-	public static ConstructionType getRandomConstructiontype() {
+	public static BuildType getRandomConstructiontype() {
 		int x = new Random().nextInt(4);
 		switch (x) {
 		case 0:
-			return ConstructionType.EPK;
+			return BuildType.EPK;
 		case 1:
-			return ConstructionType.BRICK;
+			return BuildType.BRICK;
 		case 2:
-			return ConstructionType.PANEL;
+			return BuildType.PANEL;
 		case 3:
-			return ConstructionType.KIRPICH;
+			return BuildType.KIRPICH;
 		}
 		return null;
 	}
 	
 	@Override
 	public String imotInfo() {
-		return "Type: " + this.getType() + " " + this.getConstructionType() + " Price: " + this.getPrice() + " Area: " + getArea() + " Seller: " + this.getSeller().getName();
+		return "HOUSE Type: " + this.getType() + " " + this.getBuildType() + " Price: " + this.getPrice() + " Area: " + getArea() + " Seller: " + this.getSeller().getName();
 	}
 }

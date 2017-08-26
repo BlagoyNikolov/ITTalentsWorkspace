@@ -14,6 +14,14 @@ public class Order {
 	private LocalDate date;
 	private double discount;
 	
+	public Order(Client client, double discount, ArrayList<Cake> cakes, LocalDate date) {
+		this.client = client;
+		this.discount = discount;
+		this.cakes = cakes;
+		this.date = date;
+		calculateOrderPrice(cakes);
+	}
+	
 	public double getPrice() {
 		return price;
 	}
@@ -28,14 +36,6 @@ public class Order {
 	
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	
-	public Order(Client client, double discount, ArrayList<Cake> cakes, LocalDate date) {
-		this.client = client;
-		this.discount = discount;
-		this.cakes = cakes;
-		this.date = date;
-		calculateOrderPrice(cakes);
 	}
 	
 	public double calculateOrderPrice(ArrayList<Cake> cakes) {

@@ -7,22 +7,22 @@ import imoti.estates.Imot;
 public class Seller extends Client {
 	private Imot imot;
 	
-	public Imot getImot() {
-		return imot;
-	}
-	
 	public Seller(String name, String phone, Agency agency, Imot imot, double budget) {
 		super(name, phone, agency, budget);
 		this.imot = imot;
 		this.imot.setAgent(this.getAgent());
 		this.imot.setSeller(this);
 	}
+	
+	public Imot getImot() {
+		return imot;
+	}
 
 	public void registerImotForSale() {
 		Agent a = this.getAgency().getRandomAgent();
 		this.setAgent(a);
-		a.getSellers().add(this);
-		this.getAgency().addImotToAds(getImot());
+		a.addSeller(this);
+		this.getAgency().addImotToCatalogue(getImot());
 	}
 	
 	public void sellerInfo() {
@@ -35,7 +35,7 @@ public class Seller extends Client {
 	
 	@Override
 	public int hashCode() {
-		return this.name.hashCode() + this.agency.hashCode() + (int) this.budget;
+		return this.name.hashCode() + this.agency.hashCode() + (int) (100 * this.budget);
 	}
 	
 	@Override

@@ -1,6 +1,8 @@
 package cakes.cake;
 
-public abstract class Cake implements Comparable<Cake> {
+import java.util.Random;
+
+public abstract class Cake /*implements Comparable<Cake>*/ {
 	public enum Type {
 		STANDARD, WEDDING, SPECIAL, JUVENILE;
 	}
@@ -9,8 +11,14 @@ public abstract class Cake implements Comparable<Cake> {
 	protected String description;
 	protected double price;
 	protected int pieces;
-	private Type type;
-	private IKind kind;
+	protected Type type;
+	protected IKind kind;
+	
+	public Cake() {
+		this.setPrice(new Random().nextDouble() * 100);
+		this.setPieces(new Random().nextInt(8) + 1);
+		this.setRandomKind();
+	}
 	
 	public Cake(Type type, IKind kind, double price, int pieces) {
 		this.type = type;
@@ -38,6 +46,23 @@ public abstract class Cake implements Comparable<Cake> {
 		return price;
 	}
 	
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	public int getPieces() {
+		return pieces;
+	}
+
+	public void setPieces(int pieces) {
+		this.pieces = pieces;
+	}
+
+	public void setKind(IKind kind) {
+		this.kind = kind;
+	}
+
 	//public abstract Cake getRandomCake();
 	public abstract String toString();
+	public abstract void setRandomKind();
 }

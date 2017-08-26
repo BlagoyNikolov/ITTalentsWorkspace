@@ -3,7 +3,6 @@ package cakes.clients;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Random;
-
 import cakes.bakery.Bakery;
 import cakes.bakery.Order;
 import cakes.bakery.Supplier;
@@ -41,7 +40,7 @@ public class Corporate extends Client {
 	}
 
 	public void payForOrder(Supplier s, Order o){
-		System.out.println("----ORDER----");
+		System.out.println("----ORDER (Corporate)----");
 		double tip = getOrderTip(o.getPrice());
 		System.out.println("Supplier tip: " + tip);
 		double orderPrice = o.getPrice();

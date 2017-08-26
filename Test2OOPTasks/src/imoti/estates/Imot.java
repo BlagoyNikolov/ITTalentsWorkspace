@@ -15,21 +15,18 @@ public abstract class Imot implements Comparable<Imot> {
 	private Category category;
 	private String description;
 	private String address;
-	private double price;
-	private IType type;
-	private int area;
+	protected double price;
+	protected IType type;
+	protected int area;
 	private Agent agent;
 	private Seller seller;
 	
-	public Imot(Category category, String description, String address, double price, IType type, int area) {
+	public Imot(Category category, String description, String address) {
 		this.category = category;
 		this.description = description;
 		this.address = address;
-		this.price = price;
-		this.type = type;
-		this.area = area;
 	}
-	
+
 	public Category getCategory() {
 		return category;
 	}
@@ -38,8 +35,16 @@ public abstract class Imot implements Comparable<Imot> {
 		return price;
 	}
 	
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
 	public int getArea() {
 		return area;
+	}
+	
+	public void setArea(int area) {
+		this.area = area;
 	}
 	
 	public Seller getSeller() {

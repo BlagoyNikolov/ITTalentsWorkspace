@@ -3,7 +3,6 @@ package imoti.estates;
 import java.util.Random;
 
 public class House extends Imot {
-	private HouseType type;
 	private BuildType buildType;
 	private int parkoplaces;
 	private double lawnArea;
@@ -12,14 +11,29 @@ public class House extends Imot {
 		ETAJ, CQLA;
 	}
 	
-	public House(String description, String address, double price, int area, HouseType type, BuildType buildType, int parkoplaces, double lawnArea) {
-		super(Imot.Category.HOUSE, description, address, price, type, area);
+	public House(String description, String address, BuildType buildType) {
+		super(Imot.Category.HOUSE, description, address);
 		this.buildType = buildType;
-		this.parkoplaces = parkoplaces;
-		this.lawnArea = lawnArea;
+		this.setPrice(30000 * new Random().nextDouble() + 50000);
+		this.setArea(new Random().nextInt(300) + 100);
+		this.setParkoplaces(new Random().nextInt(3) + 1);
+		this.setLawnArea(30 * new Random().nextDouble());
+		this.setRandomKind();
 	}
 	
-	public HouseType getType() {
+	public void setRandomKind() {
+		int x = new Random().nextInt(2);
+		switch (x) {
+		case 0:
+			this.type = HouseType.ETAJ;
+			break;
+		case 1:
+			this.type = HouseType.CQLA;
+			break;
+		}
+	}
+	
+	public IType getType() {
 		return type;
 	}
 	
@@ -27,15 +41,22 @@ public class House extends Imot {
 		return buildType;
 	}
 	
-	public static HouseType getRandomType() {
-		int x = new Random().nextInt(2);
-		switch (x) {
-		case 0:
-			return HouseType.ETAJ;
-		case 1:
-			return HouseType.CQLA;
-		}
-		return null;
+	@Override
+	public void setPrice(double price) {
+		super.setPrice(price);
+	}
+	
+	@Override
+	public void setArea(int area) {
+		super.setArea(area);
+	}
+	
+	public void setParkoplaces(int parkoplaces) {
+		this.parkoplaces = parkoplaces;
+	}
+	
+	public void setLawnArea(double lawnArea) {
+		this.lawnArea = lawnArea;
 	}
 	
 	public static BuildType getRandomConstructiontype() {
@@ -55,6 +76,6 @@ public class House extends Imot {
 	
 	@Override
 	public String imotInfo() {
-		return "HOUSE Type: " + this.getType() + " " + this.getBuildType() + " Price: " + this.getPrice() + " Area: " + getArea() + " Seller: " + this.getSeller().getName();
+		return "HOUSE Type: " + this.getType() + " " + this.getBuildType() + " Price: " + this.getPrice() + " Area: " + getArea() + " ParkoPlaces: " + this.parkoplaces + " Lawn area: " + this.lawnArea + " Seller: " + this.getSeller().getName();
 	}
 }

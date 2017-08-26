@@ -1,18 +1,9 @@
 package cakes;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.TreeMap;
 import cakes.bakery.Bakery;
 import cakes.bakery.Supplier;
-import cakes.cake.Cake;
-import cakes.cake.IKind;
-import cakes.cake.Juvenile;
-import cakes.cake.Special;
-import cakes.cake.Standard;
-import cakes.cake.Wedding;
 import cakes.clients.Corporate;
 import cakes.clients.Private;
 import cakes.clients.Client;
@@ -20,16 +11,14 @@ import cakes.clients.Client;
 public class Demo {
 	public static void main(String[] args) {
 		ArrayList<Supplier> suppliers = generateSuppliers();
-		//ArrayList<Cake> cakes = generateCakes();
-		Map<Cake.Type, TreeMap<IKind, List<Cake>>> cakes = generateCakes();
-		Bakery bakery = new Bakery("Sladki Talanti", "Infinity tower", cakes, suppliers);
+		Bakery bakery = new Bakery("Sladki Talanti", "Infinity tower", suppliers);
 		
 		bakery.printAllCakesInBakery();
 		
 		ArrayList<Private> privateClients = generatePrivateClients(bakery);
 		ArrayList<Corporate> corporateClients = generateCorporateClients(bakery);
 		
-		//System.out.println("Number of available cakes: " + bakery.getAllAvailableCakes());
+		System.out.println("Number of available cakes: " + bakery.getNumberOfCakes());
 		
 		ArrayList<Client> allClients = new ArrayList<Client>();
 		allClients.addAll(privateClients);
@@ -43,7 +32,7 @@ public class Demo {
 			privateClient.makeOrder();
 		}
 		
-		//System.out.println("Number of available cakes: " + bakery.getAllAvailableCakes());
+		System.out.println("Number of available cakes: " + bakery.getNumberOfCakes());
 		System.out.println("Bakery income " + bakery.getMoney());
 		for (Supplier supplier : suppliers) {
 			System.out.println(supplier.toString());
@@ -84,38 +73,10 @@ public class Demo {
 		return suppliers;
 	}
 	
-	public static Map<Cake.Type, TreeMap<IKind, List<Cake>>> generateCakes() {
-		Map<Cake.Type, TreeMap<IKind, List<Cake>>> cakes = new TreeMap<Cake.Type, TreeMap<IKind, List<Cake>>>();
-		for (int i = 0; i < 30; i++) {
-			int x = new Random().nextInt(4);
-			switch (x) {
-			case 0:
-				Bakery.addCakeToMap(new Standard(new Random().nextDouble() * 100, new Random().nextInt(8) + 1, Standard.getRandomStandardCakeType()), cakes);
-				//cakes.add(new Standard(new Random().nextDouble() * 100, new Random().nextInt(8) + 1, Standard.getRandomStandardCakeType()));
-				break;
-			case 1:
-				Bakery.addCakeToMap(new Special(new Random().nextDouble() * 100, new Random().nextInt(8) + 1, Special.getRandomSpecialCakeType()), cakes);
-				//cakes.add(new Special(new Random().nextDouble() * 100, new Random().nextInt(8) + 1, Special.getRandomSpecialCakeType()));
-				break;	
-			case 2:
-				Bakery.addCakeToMap(new Wedding(new Random().nextDouble() * 100, new Random().nextInt(8) + 1, Wedding.getRandomWeddingCakeType()), cakes);
-				//cakes.add(new Wedding(new Random().nextDouble() * 100, new Random().nextInt(8) + 1, Wedding.getRandomWeddingCakeType()));
-				break;
-			case 3:
-				Bakery.addCakeToMap(new Juvenile(new Random().nextDouble() * 100, new Random().nextInt(8) + 1, Juvenile.getRandomJuvenileCakeType()), cakes);
-				//cakes.add(new Juvenile(new Random().nextDouble() * 100, new Random().nextInt(8) + 1, Juvenile.getRandomJuvenileCakeType()));
-				break;
-			default:
-				break;
-			}
-		}
-		return cakes;
-	}
-	
 	private static ArrayList<Private> generatePrivateClients(Bakery bakery) {
 		ArrayList<Private> privateClients = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
-			privateClients.add(new Private("PrivateClient"+i, bakery, new Random().nextDouble() * 1000));
+			privateClients.add(new Private("Private Client"+i, bakery, new Random().nextDouble() * 1000));
 		}
 		return privateClients;
 	}
@@ -123,7 +84,7 @@ public class Demo {
 	private static ArrayList<Corporate> generateCorporateClients(Bakery bakery) {
 		ArrayList<Corporate> corporateClients = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
-			corporateClients.add(new Corporate("PrivateClient"+i, bakery, new Random().nextDouble() * 1000));
+			corporateClients.add(new Corporate("Corporate Client"+i, bakery, new Random().nextDouble() * 1000));
 		}
 		return corporateClients;
 	}

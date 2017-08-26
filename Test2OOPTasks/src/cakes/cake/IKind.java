@@ -1,5 +1,7 @@
 package cakes.cake;
 
-public interface IKind {
+import java.io.Serializable;
+
+public interface IKind extends Serializable {
 
 }

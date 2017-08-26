@@ -47,16 +47,20 @@ public class Private extends Client {
 		Supplier s = this.bakery.getRandomSupplier();
 		s.addOrder(o);
 		payForOrder(s, o);
-		
 	}
 	
 	public void payForOrder(Supplier s, Order o){
-		System.out.println("----ORDER----");
+		System.out.println("----ORDER (Private)----");
+		System.out.println("Order price before coupons: " + o.getPrice());
 		double orderPrice = o.getPrice() - calculateCouponPrice();
+		if (orderPrice < 0) {
+			orderPrice = 0;
+			System.out.println("COUPONS FTW! FREE ORDER!");
+		}
 		System.out.println("Order price: " + orderPrice);
 		double tip = getOrderTip(orderPrice);
 		System.out.println("Supplier tip: " + tip);
-		System.out.println("Client money b4: " + this.money);
+		System.out.println("Client money before: " + this.money);
 		this.payMoney(orderPrice + tip);
 		this.payedMoney += (orderPrice + tip);
 		System.out.println("Client money after: " + this.money);
@@ -64,6 +68,7 @@ public class Private extends Client {
 		this.bakery.addMoney(orderPrice);
 		this.cakes.addAll(o.getCakes());
 		s.getOrders().remove(o);
+		s.increaseOrderCount();
 	}
 	
 	private double getOrderTip(double price) {

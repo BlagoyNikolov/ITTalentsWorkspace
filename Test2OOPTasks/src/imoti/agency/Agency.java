@@ -74,16 +74,17 @@ public class Agency {
 
 	public void addImotToCatalogue(Imot imot) {
 		if (this.catalogue.containsKey(imot.getCategory())) {
-			for (Iterator<Entry<Imot.Category, TreeSet<Imot>>> iterator = catalogue.entrySet().iterator(); iterator.hasNext();) {
-				Entry<Imot.Category, TreeSet<Imot>> entry = iterator.next();
-				if (entry.getKey().equals(imot.getCategory())) {
-					if (entry.getValue().contains(imot)) {
-						System.out.println("This imot has already been added!");
-					} else {
-						entry.getValue().add(imot);
-					}
-				}
-			}
+			this.catalogue.get(imot.getCategory()).add(imot);
+//			for (Iterator<Entry<Imot.Category, TreeSet<Imot>>> iterator = catalogue.entrySet().iterator(); iterator.hasNext();) {
+//				Entry<Imot.Category, TreeSet<Imot>> entry = iterator.next();
+//				if (entry.getKey().equals(imot.getCategory())) {
+//					if (entry.getValue().contains(imot)) {
+//						System.out.println("This imot has already been added!");
+//					} else {
+//						entry.getValue().add(imot);
+//					}
+//				}
+//			}
 		} else {
 			this.catalogue.put(imot.getCategory(), new TreeSet<>());
 			this.catalogue.get(imot.getCategory()).add(imot);
@@ -97,6 +98,7 @@ public class Agency {
 				TreeSet<Imot> allImoti = iterator.next();
 				if (allImoti.contains(imot)) {
 					allImoti.remove(imot);
+					numberOfProperties--;
 				}
 			}
 		}

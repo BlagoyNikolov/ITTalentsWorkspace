@@ -3,16 +3,39 @@ package imoti.estates;
 import java.util.Random;
 
 public class Appartment extends Imot {
-	private AppartmentType type;
 	private BuildType buildType;
 	
 	public enum AppartmentType implements IType {
 		STUDIO, GARCIONERA, DVUSTAEN, TRISTAEN, MAISONETTE;
 	}
 	
-	public Appartment(String description, String address, double price, int area, AppartmentType type, BuildType buildType) {
-		super(Imot.Category.APARTAMENT, description, address, price, type, area);
+	public Appartment(String description, String address, BuildType buildType) {
+		super(Imot.Category.APARTAMENT, description, address);
 		this.buildType = buildType;
+		this.setPrice(80000 * new Random().nextDouble() + 70000);
+		this.setArea(new Random().nextInt(200) + 50);
+		this.setRandomKind();
+	}
+	
+	public void setRandomKind() {
+		int x = new Random().nextInt(5);
+		switch (x) {
+		case 0:
+			this.type = AppartmentType.STUDIO;
+			break;
+		case 1:
+			this.type = AppartmentType.GARCIONERA;
+			break;
+		case 2:
+			this.type = AppartmentType.DVUSTAEN;
+			break;
+		case 3:
+			this.type = AppartmentType.TRISTAEN;
+			break;
+		case 4:
+			this.type = AppartmentType.MAISONETTE;
+			break;
+		}
 	}
 	
 	public IType getAppartmentType() {
@@ -22,22 +45,15 @@ public class Appartment extends Imot {
 	public BuildType getBuildType() {
 		return buildType;
 	}
-
-	public static AppartmentType getRandomType() {
-		int x = new Random().nextInt(5);
-		switch (x) {
-		case 0:
-			return AppartmentType.STUDIO;
-		case 1:
-			return AppartmentType.GARCIONERA;
-		case 2:
-			return AppartmentType.DVUSTAEN;
-		case 3:
-			return AppartmentType.TRISTAEN;
-		case 4:
-			return AppartmentType.MAISONETTE;
-		}
-		return null;
+	
+	@Override
+	public void setPrice(double price) {
+		super.setPrice(price);
+	}
+	
+	@Override
+	public void setArea(int area) {
+		super.setArea(area);
 	}
 	
 	public static BuildType getRandomConstructiontype() {

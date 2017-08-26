@@ -25,13 +25,13 @@ public class Demo {
 			int number = new Random().nextInt(3);
 			switch (number) {
 			case 0:
-				sellers.add(new Seller("Seller" + i, "0887 898 792", talents, new Appartment("App descr"+i, "App addr"+i, 80000 * new Random().nextDouble() + 70000, new Random().nextInt(200) + 50, Appartment.getRandomType(), Appartment.getRandomConstructiontype()), 5000));
+				sellers.add(new Seller("Seller" + i, "0887 898 792", talents, new Appartment("App descr"+i, "App addr"+i, Appartment.getRandomConstructiontype()), 5000));
 				break;
 			case 1:
-				sellers.add(new Seller("Seller" + i, "0887 898 792", talents, new House("Haus descr"+i, "Haus addr"+i, 30000 * new Random().nextDouble() + 50000, new Random().nextInt(300) + 100, House.getRandomType(), House.getRandomConstructiontype(), 5, 30 * new Random().nextDouble()), 5000));
+				sellers.add(new Seller("Seller" + i, "0887 898 792", talents, new House("Haus descr"+i, "Haus addr"+i, House.getRandomConstructiontype()), 5000));
 				break;
 			case 2:
-				sellers.add(new Seller("Seller" + i, "0887 898 792", talents, new Parcel("Parc descr"+i, "Parc addr"+i, 55000 * new Random().nextDouble() + 30000, new Random().nextInt(200) + 50, Parcel.getRandomType(), new Random().nextBoolean()), 5000));
+				sellers.add(new Seller("Seller" + i, "0887 898 792", talents, new Parcel("Parc descr"+i, "Parc addr"+i), 5000));
 				break;
 			}
 		}

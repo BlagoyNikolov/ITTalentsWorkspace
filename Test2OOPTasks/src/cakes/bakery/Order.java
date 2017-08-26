@@ -19,7 +19,7 @@ public class Order {
 		this.discount = discount;
 		this.cakes = cakes;
 		this.date = date;
-		calculateOrderPrice(cakes);
+		this.price = calculateOrderPrice(cakes);
 	}
 	
 	public double getPrice() {
@@ -43,8 +43,10 @@ public class Order {
 		for (Cake cake : cakes) {
 			sum += cake.getPrice();
 		}
-		this.setPrice(calculatePricePlusDiscount(sum));
-		return sum;
+		//System.out.println("SUM " + sum);
+		double finalSum = calculatePricePlusDiscount(sum);
+		//System.out.println("FINALSUM " + finalSum);
+		return finalSum;
 	}
 	
 	public double calculatePricePlusDiscount(double money){

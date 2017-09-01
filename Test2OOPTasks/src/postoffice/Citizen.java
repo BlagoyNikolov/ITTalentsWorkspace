@@ -48,7 +48,6 @@ public class Citizen {
 	
 	public Letter getRandomLetter() {
 		int i = 0;
-		System.out.println(this.letters.size());
 		int index = new Random().nextInt(this.letters.size());
 		for (Iterator<Letter> iterator = this.letters.iterator(); iterator.hasNext();) {
 			Letter letter = iterator.next();
@@ -76,12 +75,14 @@ public class Citizen {
 	}
 	
 	public void printLetters() {
+		System.out.println(this.name + " Letters:");
 		for (Letter letter : letters) {
 			System.out.println(letter);
 		}
 	}
 	
 	public void printColettes() {
+		System.out.println(this.name + " Colettes:");
 		for (Colette colette : colettes) {
 			System.out.println(colette);
 		}

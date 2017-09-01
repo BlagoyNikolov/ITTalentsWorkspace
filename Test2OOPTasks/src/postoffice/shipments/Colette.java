@@ -27,6 +27,10 @@ public class Colette extends Shipment {
 			this.price += (0.5 * price);
 		}
 	}
+	
+	public boolean isFragile() {
+		return isFragile;
+	}
 
 	@Override
 	public int hashCode() {

@@ -32,6 +32,13 @@ public class MailBox {
 		}
 		return null;
 	}
+	
+	public void printBoxContent() {
+		System.out.println("-----"+this.name+" Content-----");
+		for (Letter letter : letters) {
+			System.out.println(letter.toString());
+		}
+	}
 
 	@Override
 	public int hashCode() {

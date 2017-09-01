@@ -17,11 +17,21 @@ public class MailStation {
 	private HashSet<MailBox> mailBoxes;
 	private TreeMap<LocalDate, TreeMap<LocalTime, Shipment>> archive;
 	private HashSet<Shipment> repository;
+	private HashSet<Gatherer> gatherers;
+	private int allShipmentsNumber = 0;
+	private int numberOfColettes = 0;
+	private int numberOfLetters = 0;
+	private int numberOfFrigileColettes = 0;
 	
 	public MailStation(HashSet<MailBox> mailBoxes) {
 		this.mailBoxes = mailBoxes;
 		this.archive = new TreeMap<>();
 		this.repository = new HashSet<>();
+		this.gatherers = new HashSet<>();
+	}
+	
+	public void addGatherer(Gatherer g) {
+		this.gatherers.add(g);
 	}
 
 	public void receiveLetter(Letter l) {
@@ -31,6 +41,8 @@ public class MailStation {
 			for (Iterator<Entry<LocalDate, TreeMap<LocalTime, Shipment>>> iterator = archive.entrySet().iterator(); iterator.hasNext();) {
 				Entry<LocalDate, TreeMap<LocalTime, Shipment>> entry = iterator.next();
 				entry.getValue().put(LocalTime.now(), l);
+				this.allShipmentsNumber++;
+				this.numberOfLetters++;
 			}
 		} else {
 			try {
@@ -43,6 +55,8 @@ public class MailStation {
 				for (Iterator<Entry<LocalDate, TreeMap<LocalTime, Shipment>>> iterator = archive.entrySet().iterator(); iterator.hasNext();) {
 					Entry<LocalDate, TreeMap<LocalTime, Shipment>> entry = iterator.next();
 					entry.getValue().put(LocalTime.now(), l);
+					this.allShipmentsNumber++;
+					this.numberOfLetters++;
 				}
 			}
 			
@@ -56,6 +70,11 @@ public class MailStation {
 			for (Iterator<Entry<LocalDate, TreeMap<LocalTime, Shipment>>> iterator = archive.entrySet().iterator(); iterator.hasNext();) {
 				Entry<LocalDate, TreeMap<LocalTime, Shipment>> entry = iterator.next();
 				entry.getValue().put(LocalTime.now(), c);
+				this.allShipmentsNumber++;
+				this.numberOfColettes++;
+				if (c.isFragile()) {
+					this.numberOfFrigileColettes++;
+				}
 			}
 		} else {
 			try {
@@ -68,6 +87,11 @@ public class MailStation {
 				for (Iterator<Entry<LocalDate, TreeMap<LocalTime, Shipment>>> iterator = archive.entrySet().iterator(); iterator.hasNext();) {
 					Entry<LocalDate, TreeMap<LocalTime, Shipment>> entry = iterator.next();
 					entry.getValue().put(LocalTime.now(), c);
+					this.allShipmentsNumber++;
+					this.numberOfColettes++;
+					if (c.isFragile()) {
+						this.numberOfFrigileColettes++;
+					}
 				}
 			}
 			
@@ -80,7 +104,6 @@ public class MailStation {
 		for (Iterator<MailBox> iterator = this.mailBoxes.iterator(); iterator.hasNext();) {
 			MailBox box = iterator.next();
 			if (index == i) {
-				iterator.remove();
 				return box;
 			}
 			i++;
@@ -106,5 +129,27 @@ public class MailStation {
 				System.out.println(smallEntry.getValue().toString());
 			}
 		}
+	}
+	
+	public void printMailBoxesContent() {
+		System.out.println("-----MAIL BOXES-----");
+		for (MailBox mailBox : mailBoxes) {
+			mailBox.printBoxContent();
+		}
+	}
+	
+	public void addGathererLettersToStation() {
+		for (Gatherer g : gatherers) {
+			HashSet<Letter> lettersGathered = g.giveLettersToStation();
+			for (Letter letter : lettersGathered) {
+				this.receiveLetter(letter);
+			}
+		}
+	}
+	
+	public void printMailStationStats() {
+		System.out.println(numberOfLetters + " " + allShipmentsNumber);
+		System.out.printf("percent of Letters / all shipments: %.2f\n", 100 * numberOfLetters / (double)allShipmentsNumber);
+		System.out.printf("percent of Fragile Colettes / all colettes: %.2f\n", 100 * numberOfFrigileColettes / (double)numberOfColettes);
 	}
 }

@@ -16,7 +16,11 @@ public class Letter extends Shipment {
 		int result = 1;
 		long temp;
 		temp = Double.doubleToLongBits(price);
+		Citizen sender = this.sender;
+		Citizen receiver = this.receiver;
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + sender.hashCode();
+		result = prime * result + receiver.hashCode();
 		return result;
 	}
 
@@ -29,7 +33,7 @@ public class Letter extends Shipment {
 		if (getClass() != obj.getClass())
 			return false;
 		Letter other = (Letter) obj;
-		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price)/* && !this.sender.equals(other.sender) && !this.receiver.equals(other.receiver)*/)
 			return false;
 		return true;
 	}

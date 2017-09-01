@@ -3,6 +3,7 @@ package postoffice;
 import java.util.HashSet;
 import java.util.Random;
 
+import postoffice.post.Gatherer;
 import postoffice.post.MailBox;
 import postoffice.post.MailStation;
 import postoffice.shipments.Colette;
@@ -17,7 +18,7 @@ public class Demo {
 		MailStation station = new MailStation(mailBoxes);
 		
 		Citizen jonDoe = new Citizen("Jon", "Doe", "asdaw");
-		Citizen janeDoe = new Citizen("Jane", "Doe", "dwadwa");
+		Citizen janeDoe = new Citizen("Jane", "Doe", "sada");
 		
 		Letter l1 = new Letter(jonDoe, janeDoe);
 		Letter l2 =  new Letter(janeDoe, jonDoe);
@@ -37,7 +38,22 @@ public class Demo {
 		
 		janeDoe.dropLetterInBox(station.getRandomBox());
 		
+		janeDoe.printLetters();
+		
 		station.printArchive();
 		station.printRepository();
+		
+		station.printMailBoxesContent();
+		
+		Gatherer g = new Gatherer("G1", "L1", 5, station.getRandomBox());
+		station.addGatherer(g);
+		g.getBoxContent();
+		
+		station.addGathererLettersToStation();
+		
+		station.printArchive();
+		station.printRepository();
+		
+		station.printMailStationStats();
 	}
 }

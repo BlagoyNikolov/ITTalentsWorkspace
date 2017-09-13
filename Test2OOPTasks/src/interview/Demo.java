@@ -1,6 +1,7 @@
 package interview;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -12,7 +13,7 @@ import interview.Printx.Inner;
 
 abstract class Demo {
 	public static void main(String[] args) {
-		Printx p = new Printx();
+		Printx p = new Printx(0, null);
 		Printx.Inner in = p.new Inner();
 		//in.print();
 		ArrayList ar = new ArrayList<>();
@@ -93,7 +94,33 @@ abstract class Demo {
 //		}
 //		
 		doSomething();
+		int[] arr = {4,8,9,3,8,4,5,31,65,7,9,5,46,8,1};
+		bubble(arr);
+		System.out.println(Arrays.toString(arr));
 		
+		new Anon() {
+			@Override
+			public void sayHi() {
+				System.out.println("Hey");
+				super.sayHi();
+			}
+		}.sayHi();
+		
+		Integer a = 5;
+		a++;
+		System.out.println(a);
+	}
+	
+	public static void bubble(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = 0; j < arr.length - i - 1; j++) {
+				if (arr[j] > arr[j+1]) {
+					int temp = arr[j];
+					arr[j]  = arr[j+1];
+					arr[j+1] = temp;
+				}
+			}
+		}
 	}
 	
 

@@ -1,9 +1,9 @@
 package interview;
 
-public class Printx {
+public class Printx implements Interfaceable {
 	private int x=5; 
 	
-	public Printx() {
+	public Printx(int x, String z) {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -19,6 +19,12 @@ public class Printx {
 		 void print() {
 			System.out.println(x);
 		}
+	}
+
+	@Override
+	public void sayHi() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

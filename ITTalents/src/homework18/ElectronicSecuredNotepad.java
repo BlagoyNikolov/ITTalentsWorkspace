@@ -1,6 +1,6 @@
 package homework18;
 
-public class ElectronicSecuredNotepad extends SecuredNotepad implements IÅlectronicDevice {
+public class ElectronicSecuredNotepad extends SecuredNotepad implements IElectronicDevice {
 	private boolean isStarted;
 
 	@Override

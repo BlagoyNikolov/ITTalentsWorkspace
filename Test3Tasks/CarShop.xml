@@ -1,0 +1,27 @@
+<xmljson.CarShop>
+  <carShopName>Talents</carShopName>
+  <address>Infinity Tower</address>
+  <cars>
+    <xmljson.Car>
+      <brand>BMW</brand>
+      <model>M4</model>
+      <hp>450</hp>
+      <topSpeed>320</topSpeed>
+      <engineDisplacement>3.6</engineDisplacement>
+    </xmljson.Car>
+    <xmljson.Car>
+      <brand>Subaru</brand>
+      <model>Impreza WRX STI</model>
+      <hp>350</hp>
+      <topSpeed>290</topSpeed>
+      <engineDisplacement>2.5</engineDisplacement>
+    </xmljson.Car>
+    <xmljson.Car>
+      <brand>Nissan</brand>
+      <model>GT-R R35</model>
+      <hp>600</hp>
+      <topSpeed>320</topSpeed>
+      <engineDisplacement>3.8</engineDisplacement>
+    </xmljson.Car>
+  </cars>
+</xmljson.CarShop>

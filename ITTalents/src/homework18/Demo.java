@@ -5,7 +5,6 @@ public class Demo {
 		//simpleNotepadDemo();
 		//securedNotepadDemo();
 		electronicSecuredNotepadDemo();
-		
 	}
 
 	private static void securedNotepadDemo() throws InsufficientPasswordStrengthException {

@@ -52,7 +52,7 @@ public class WarAndPeace {
 	private File findLongestWord() throws FileNotFoundException {
 		File book = new File("voinaImir.txt");
 		Scanner sc = new Scanner(book);
-		while (sc.hasNextLine()) {
+		while (sc.hasNextLine()) { 
 			this.lines++;
 			String line = sc.nextLine();
 			this.symbols += line.length();

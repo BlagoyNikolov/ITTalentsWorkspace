@@ -12,10 +12,18 @@ import postoffice.shipments.Letter;
 public class Demo {
 	public static void main(String[] args) {
 		HashSet<MailBox> mailBoxes = new HashSet<>();
-		for (int i = 0; i < 25; i++) {
-			mailBoxes.add(new MailBox("MilboxAddr" + i));
-		}
 		MailStation station = new MailStation(mailBoxes);
+		Gatherer g = new Gatherer("G1", "L1", 5, station.getRandomBox(), station);
+		station.addGatherer(g);
+		for (int i = 0; i < 25; i++) {
+			mailBoxes.add(new MailBox("MilboxAddr" + i, g));
+		}
+		
+		Thread g1 = new Thread(g);
+		g1.start();
+		for (MailBox mailBox : mailBoxes) {
+			mailBox.start();
+		}
 		
 		Citizen jonDoe = new Citizen("Jon", "Doe", "asdaw");
 		Citizen janeDoe = new Citizen("Jane", "Doe", "sada");
@@ -44,12 +52,6 @@ public class Demo {
 		station.printRepository();
 		
 		station.printMailBoxesContent();
-		
-		Gatherer g = new Gatherer("G1", "L1", 5, station.getRandomBox());
-		station.addGatherer(g);
-		g.getBoxContent();
-		
-		station.addGathererLettersToStation();
 		
 		station.printArchive();
 		station.printRepository();

@@ -4,9 +4,13 @@ public class Demo {
 	public static void main(String[] args) {
 		Shop shop = new Shop("Talanti.bg");
 		Supplier s = new Supplier(shop);
-		Client c = new Client(shop);
+		Client c1 = new Client(shop, "Fender", 5);
+		Client c2 = new Client(shop, "Yamaha", 4);
+		Client c3 = new Client(shop, "Pearls", 5);
 		
-		c.start();
+		c1.start();
+		c2.start();
+		c3.start();
 		s.start();
 		
 //		shop.printInstrumentsByType();

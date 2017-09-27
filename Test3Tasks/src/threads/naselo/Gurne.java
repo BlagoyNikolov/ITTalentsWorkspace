@@ -1,57 +1,38 @@
 package threads.naselo;
 
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Gurne {
-	private int bob = 200;
-	private static final int MAX = 100;
-	private static final int MIN = 50;
-	
-	public ArrayBlockingQueue<Integer> gurne = new ArrayBlockingQueue<>(MAX);
-	
-	public void sipiBob() {
-		try {
-			gurne.put(10);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Babata sipa bob, v gurneto ima " + gurne.size());
-	}
-	
-	public void qjBob() {
-		try {
-			gurne.take();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Babata sipa bob, v gurneto ima " + gurne.size());
-	}
 
-//	public synchronized void sipiBob() {
-//		if (this.bob < MAX) {
-//			this.bob += 10;
-//			System.out.println("Babata sipa bob, v gurneto ima " + this.bob);
-//			notifyAll();
-//		} else {
-//			try {
-//				wait();
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	}
+	private AtomicInteger quantityofBob = new AtomicInteger(10);//kg
 	
-//	public synchronized void qjBob() {
-//		if (this.bob > MIN) {
-//			this.bob -= 10;
-//			System.out.println("Vnucheto naguna bob, v gurneto ima " + this.bob);
-//			notifyAll();
-//		} else {
-//			try {
-//				wait();
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	}
+	public int getQuantityofBob() {
+		return quantityofBob.get();
+	}
+	
+	public synchronized void removeBob(int bob){
+		while(quantityofBob.get() <= 0){
+			try {
+				this.wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		this.quantityofBob.addAndGet(-bob);
+		this.notifyAll();
+		System.out.println("Bob removed - remaining = " + quantityofBob);
+	}
+	
+	public synchronized void addBob(int bob) {
+		while(quantityofBob.get() >= 20) {
+			try {
+				this.wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		this.quantityofBob.addAndGet(bob);
+		this.notifyAll();
+		System.out.println("Bob added - remaining = " + quantityofBob);
+	}
 }

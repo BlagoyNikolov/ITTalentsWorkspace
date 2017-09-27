@@ -19,6 +19,7 @@ public class Shop {
 	private double incomeFromSales;
 	private HashMap<Instrument, Integer> soldInstruments;
 	public static final int MIN_QUANTITY = 2;
+	public boolean temp = false;
 	
 	public Shop(String name) {
 		this.name = name;
@@ -77,8 +78,8 @@ public class Shop {
 		for (InstrumentType type : this.instruments.keySet()) {
 			if (this.instruments.get(type).containsKey(name)) {
 				Instrument i = this.instruments.get(type).get(name);
-				//if (quantity < i.getAvailability()) {
-					i.decreaseQuantity(quantity);
+				i.decreaseQuantity(quantity);
+				if (quantity < i.getAvailability()) {
 					this.money += i.getPrice() * quantity;
 					this.incomeFromSales += i.getPrice() * quantity;
 					System.out.println(i.getType() + " " + i.getName() + " sold!");
@@ -87,9 +88,11 @@ public class Shop {
 					}else{
 						this.soldInstruments.put(i, quantity);
 					}
-//				} else {
-//					System.out.println("Not enough uits available; currently available: " + i.getAvailability());
-//				}
+					this.temp = false;
+				} else {
+					this.temp = true;
+					System.out.println("Not enough uits available; currently available: " + i.getAvailability() + " Time to delivery: " + i.getDeliveryTime());
+				}
 				break;
 			}
 		}
@@ -125,7 +128,7 @@ public class Shop {
 				Instrument i = instrument.getValue();
 				if(i.getAvailability() < MIN_QUANTITY){
 					System.out.println(i.getType() + " " + i.getName() + " bought!");
-					i.increaseQuantity(5);
+					i.increaseQuantity(15);
 				}
 			}
 		}

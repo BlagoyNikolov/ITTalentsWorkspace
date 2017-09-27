@@ -11,5 +11,11 @@ public abstract class Shipment {
 		this.receiver = receiver;
 	}
 	
+	public Citizen getSender() {
+		return sender;
+	}
 	
+	public Citizen getReceiver() {
+		return receiver;
+	}
 }

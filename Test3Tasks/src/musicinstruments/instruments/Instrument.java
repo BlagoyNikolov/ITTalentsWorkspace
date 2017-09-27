@@ -9,12 +9,14 @@ public abstract class Instrument implements Comparable<Instrument> {
 	protected double price;
 	protected int availability;
 	protected InstrumentType type;
+	protected int deliveryTime;
 	
-	public Instrument(String name, double price, int availability, InstrumentType type) {
+	public Instrument(String name, double price, int availability, InstrumentType type, int deliveryTime) {
 		this.name = name;
 		this.price = price;
 		this.availability = availability;
 		this.type = type;
+		this.deliveryTime = deliveryTime;
 	}
 	
 	public String getName() {
@@ -27,6 +29,10 @@ public abstract class Instrument implements Comparable<Instrument> {
 	
 	public int getAvailability() {
 		return this.availability;
+	}
+	
+	public int getDeliveryTime() {
+		return deliveryTime;
 	}
 	
 	public InstrumentType getType() {

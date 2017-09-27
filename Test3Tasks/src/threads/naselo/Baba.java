@@ -10,7 +10,7 @@ public class Baba extends Thread {
 	@Override
 	public void run() {
 		while(true) {
-			this.g.sipiBob();
+			this.g.addBob(2);
 		}
 	}
 }

@@ -3,7 +3,7 @@ package musicinstruments.instruments;
 public class Drum extends Instrument {
 
 	public Drum(String name, double price, int availability) {
-		super(name, price, availability, InstrumentType.HIT);
+		super(name, price, availability, InstrumentType.HIT, 5);
 	}
 
 	@Override

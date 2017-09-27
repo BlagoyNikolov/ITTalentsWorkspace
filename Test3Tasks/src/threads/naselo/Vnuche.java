@@ -10,7 +10,7 @@ public class Vnuche extends Thread {
 	@Override
 	public void run() {
 		while(true) {
-			this.g.qjBob();
+			this.g.removeBob(5);
 		}
 	}
 }

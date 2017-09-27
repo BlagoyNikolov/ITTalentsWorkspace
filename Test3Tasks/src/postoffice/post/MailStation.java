@@ -33,6 +33,48 @@ public class MailStation {
 	public void addGatherer(Gatherer g) {
 		this.gatherers.add(g);
 	}
+	
+	public void addGathererLettersToStation(HashSet<Letter> letters) {
+		//for (Gatherer gatherer : gatherers) {
+//			gatherer.setBusy(true);
+//			gatherer.setGiving(false);
+//			gatherer.getBoxContent();
+			HashSet<Letter> lettersGathered = letters;
+			for (Letter letter : lettersGathered) {
+				this.receiveLetter(letter);
+			}
+//			gatherer.setBusy(false);
+		//}
+	}
+	
+	public synchronized void receiveFromGatherers(HashSet<Letter> letters) {
+		while (this.allShipmentsNumber > 50) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				System.out.println("ops");
+			}
+		}
+		addGathererLettersToStation(letters);
+		notifyAll();
+	}
+	
+	public synchronized void sendGatherers() {
+		while (this.allShipmentsNumber <= 50) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				System.out.println("ops");
+			}
+		}
+		for (Gatherer gatherer : gatherers) {
+			if (!gatherer.isBusy()) {
+				gatherer.setGiving(true);
+				
+			}
+		}
+		notifyAll();
+	}
 
 	public void receiveLetter(Letter l) {
 		this.repository.add(l);
@@ -59,7 +101,6 @@ public class MailStation {
 					this.numberOfLetters++;
 				}
 			}
-			
 		}
 	}
 	
@@ -135,15 +176,6 @@ public class MailStation {
 		System.out.println("-----MAIL BOXES-----");
 		for (MailBox mailBox : mailBoxes) {
 			mailBox.printBoxContent();
-		}
-	}
-	
-	public void addGathererLettersToStation() {
-		for (Gatherer g : gatherers) {
-			HashSet<Letter> lettersGathered = g.giveLettersToStation();
-			for (Letter letter : lettersGathered) {
-				this.receiveLetter(letter);
-			}
 		}
 	}
 	

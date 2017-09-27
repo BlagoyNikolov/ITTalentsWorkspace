@@ -11,6 +11,11 @@ public class Supplier extends Thread{
 	public void run() {
 		while(true) {
 			this.s.buy();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

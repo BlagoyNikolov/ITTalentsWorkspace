@@ -6,17 +6,26 @@ import java.util.Random;
 
 import postoffice.shipments.Letter;
 
-public class MailBox {
+public class MailBox extends Thread {
 	private HashSet<Letter> letters;
 	private String name;
+	private Gatherer gath;
 
-	public MailBox(String name) {
+	public MailBox(String name, Gatherer gath) {
 		this.letters = new HashSet<Letter>();
 		this.name = name;
+		this.gath = gath;
 	}
 	
 	public void receiveLetter(Letter l) {
 		this.letters.add(l);
+	}
+	
+	@Override
+	public void run() {
+		while (true) {
+			gath.addLetter(getRandomLetter());
+		}
 	}
 	
 	public Letter getRandomLetter() {
@@ -64,6 +73,4 @@ public class MailBox {
 			return false;
 		return true;
 	}
-	
-	
 }

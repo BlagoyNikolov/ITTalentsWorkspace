@@ -22,7 +22,6 @@ public class Colette extends Shipment {
 			this.price += (0.5 * price);
 			this.obremenitelen = true;
 		}
-		
 		if (this.isFragile) {
 			this.price += (0.5 * price);
 		}
@@ -72,7 +71,4 @@ public class Colette extends Shipment {
 				+ ", isFragile=" + isFragile + ", obremenitelen=" + obremenitelen + ", sender=" + sender + ", receiver="
 				+ receiver + "]";
 	}
-
-	
-
 }

@@ -1,0 +1,72 @@
+-----LOGGER-----
+Grozde v bidona: -5
+Rakia v magazina: 25; Kompoti v magazina: 0
+Butilki v ceha: -10; Burkani v ceha: -10
+Zaharna trustika v zavoda: 211
+----------------
+-----LOGGER-----
+Grozde v bidona: -5
+Rakia v magazina: 35; Kompoti v magazina: 70
+Butilki v ceha: 0; Burkani v ceha: -50
+Zaharna trustika v zavoda: 338
+----------------
+-----LOGGER-----
+Grozde v bidona: 35
+Rakia v magazina: 45; Kompoti v magazina: 70
+Butilki v ceha: 30; Burkani v ceha: -20
+Zaharna trustika v zavoda: 303
+----------------
+-----LOGGER-----
+Grozde v bidona: 0
+Rakia v magazina: 85; Kompoti v magazina: 140
+Butilki v ceha: 20; Burkani v ceha: -90
+Zaharna trustika v zavoda: 330
+----------------
+-----LOGGER-----
+Grozde v bidona: 0
+Rakia v magazina: 95; Kompoti v magazina: 210
+Butilki v ceha: 40; Burkani v ceha: -30
+Zaharna trustika v zavoda: 341
+----------------
+-----LOGGER-----
+Grozde v bidona: 25
+Rakia v magazina: 135; Kompoti v magazina: 210
+Butilki v ceha: -10; Burkani v ceha: -70
+Zaharna trustika v zavoda: 344
+----------------
+-----LOGGER-----
+Grozde v bidona: 50
+Rakia v magazina: 175; Kompoti v magazina: 210
+Butilki v ceha: 20; Burkani v ceha: -40
+Zaharna trustika v zavoda: 331
+----------------
+-----LOGGER-----
+Grozde v bidona: 55
+Rakia v magazina: 155; Kompoti v magazina: 210
+Butilki v ceha: 70; Burkani v ceha: -40
+Zaharna trustika v zavoda: 309
+----------------
+-----LOGGER-----
+Grozde v bidona: 55
+Rakia v magazina: 165; Kompoti v magazina: 210
+Butilki v ceha: 50; Burkani v ceha: -10
+Zaharna trustika v zavoda: 326
+----------------
+-----LOGGER-----
+Grozde v bidona: 45
+Rakia v magazina: 175; Kompoti v magazina: 210
+Butilki v ceha: 70; Burkani v ceha: 50
+Zaharna trustika v zavoda: 301
+----------------
+-----LOGGER-----
+Grozde v bidona: 50
+Rakia v magazina: 155; Kompoti v magazina: 210
+Butilki v ceha: 40; Burkani v ceha: 110
+Zaharna trustika v zavoda: 324
+----------------
+-----LOGGER-----
+Grozde v bidona: 50
+Rakia v magazina: 165; Kompoti v magazina: 210
+Butilki v ceha: 60; Burkani v ceha: 170
+Zaharna trustika v zavoda: 340
+----------------

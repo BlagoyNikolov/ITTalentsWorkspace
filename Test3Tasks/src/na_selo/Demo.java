@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Demo {
-	
 	private static final String DB_IP = "192.168.8.22";
 	private static final String DB_PORT = "3306";
 	private static final String DB_DBNAME = "hr";
